@@ -32,6 +32,7 @@
                         <field name="group_option"/>
                         <field name="foreign_currency"/>
                         <field name="with_account_name"/>
+                        <field name="centralize"/>
                     </group>
                     <group/>
                 </group>

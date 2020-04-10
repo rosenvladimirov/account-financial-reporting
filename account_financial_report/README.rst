@@ -42,9 +42,6 @@ currency used in account move lines is properly shown.
 In case that in an account has not been configured a second currency foreign
 currency balances are not available.
 
-To add several accounts by selecting all of them, install the module
-web_widget_many2many_tags_multi_selection.
-
 **Table of contents**
 
 .. contents::
@@ -114,11 +111,6 @@ Contributors
 * Alexis de Lattre <alexis@via.ecp.fr>
 * Mihai Fekete <feketemihai@gmail.com>
 * Miquel Raïch <miquel.raich@eficent.com>
-* Isaac Gallart <igallart@puntsistemes.com>
-* `Tecnativa <https://www.tecnativa.com>`__:
-
-  * Pedro M. Baeza
-  * Sergio Teruel
 
 Much of the work in this module was done at a sprint in Sorrento, Italy in
 April 2016.

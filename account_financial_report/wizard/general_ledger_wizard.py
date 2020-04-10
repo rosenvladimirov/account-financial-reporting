@@ -11,7 +11,6 @@ from odoo import api, fields, models, _
 from odoo.tools.safe_eval import safe_eval
 from odoo.tools import pycompat
 from odoo.exceptions import ValidationError
-import time
 
 
 class GeneralLedgerReportWizard(models.TransientModel):
@@ -30,10 +29,8 @@ class GeneralLedgerReportWizard(models.TransientModel):
         comodel_name='date.range',
         string='Date range'
     )
-    date_from = fields.Date(required=True,
-                            default=lambda self: self._init_date_from())
-    date_to = fields.Date(required=True,
-                          default=fields.Date.context_today)
+    date_from = fields.Date(required=True)
+    date_to = fields.Date(required=True)
     fy_start_date = fields.Date(compute='_compute_fy_start_date')
     target_move = fields.Selection([('posted', 'All Posted Entries'),
                                     ('all', 'All Entries')],
@@ -61,7 +58,6 @@ class GeneralLedgerReportWizard(models.TransientModel):
     partner_ids = fields.Many2many(
         comodel_name='res.partner',
         string='Filter partners',
-        default=lambda self: self._default_partners(),
     )
     analytic_tag_ids = fields.Many2many(
         comodel_name='account.analytic.tag',
@@ -84,37 +80,8 @@ class GeneralLedgerReportWizard(models.TransientModel):
         string='Show foreign currency',
         help='Display foreign currency for move lines, unless '
              'account currency is not setup through chart of accounts '
-             'will display initial and final balance in that currency.',
-        default=lambda self: self._default_foreign_currency(),
+             'will display initial and final balance in that currency.'
     )
-
-    def _init_date_from(self):
-        """set start date to begin of current year if fiscal year running"""
-        today = fields.Date.context_today(self)
-        cur_month = fields.Date.from_string(today).month
-        cur_day = fields.Date.from_string(today).day
-        last_fsc_month = self.env.user.company_id.fiscalyear_last_month
-        last_fsc_day = self.env.user.company_id.fiscalyear_last_day
-
-        if cur_month < last_fsc_month \
-                or cur_month == last_fsc_month and cur_day <= last_fsc_day:
-            return time.strftime('%Y-01-01')
-
-    def _default_foreign_currency(self):
-        return self.env.user.has_group('base.group_multi_currency')
-
-    def _default_partners(self):
-        context = self.env.context
-
-        if context.get('active_ids') and context.get('active_model') \
-                == 'res.partner':
-            partner_ids = context['active_ids']
-            corp_partners = self.env['res.partner'].browse(partner_ids). \
-                filtered(lambda p: p.parent_id)
-
-            partner_ids = set(partner_ids) - set(corp_partners.ids)
-            partner_ids |= set(corp_partners.mapped('parent_id.id'))
-            return list(partner_ids)
 
     @api.depends('date_from')
     def _compute_fy_start_date(self):
@@ -168,10 +135,8 @@ class GeneralLedgerReportWizard(models.TransientModel):
             res['domain']['account_journal_ids'] += [
                 ('company_id', '=', self.company_id.id)]
             res['domain']['partner_ids'] += [
-                '&',
                 '|', ('company_id', '=', self.company_id.id),
-                ('company_id', '=', False),
-                ('parent_id', '=', False)]
+                ('company_id', '=', False)]
             res['domain']['cost_center_ids'] += [
                 ('company_id', '=', self.company_id.id)]
             res['domain']['date_range_id'] += [
@@ -182,9 +147,8 @@ class GeneralLedgerReportWizard(models.TransientModel):
     @api.onchange('date_range_id')
     def onchange_date_range_id(self):
         """Handle date range change."""
-        if self.date_range_id:
-            self.date_from = self.date_range_id.date_start
-            self.date_to = self.date_range_id.date_end
+        self.date_from = self.date_range_id.date_start
+        self.date_to = self.date_range_id.date_end
 
     @api.multi
     @api.constrains('company_id', 'date_range_id')

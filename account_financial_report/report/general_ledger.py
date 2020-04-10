@@ -4,6 +4,9 @@
 
 from odoo import models, fields, api, _
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class GeneralLedgerReport(models.TransientModel):
     """ Here, we just define class fields.
@@ -60,9 +63,11 @@ class GeneralLedgerReport(models.TransientModel):
     )
 
     # Compute of unaffected earnings account
+    @api.one
     @api.depends('company_id')
     def _compute_unaffected_earnings_account(self):
         account_type = self.env.ref('account.data_unaffected_earnings')
+        #_logger.info("LINES %s" % [x.company_id.id for x in self])
         self.unaffected_earnings_account = self.env['account.account'].search(
             [
                 ('user_type_id', '=', account_type.id),
@@ -215,7 +220,7 @@ class GeneralLedgerReportCompute(models.TransientModel):
     _inherit = 'report_general_ledger'
 
     @api.multi
-    def print_report(self, report_type):
+    def print_report(self, report_type='qweb-pdf', report_sub_type=False):
         self.ensure_one()
         if report_type == 'xlsx':
             report_name = 'a_f_r.report_general_ledger_xlsx'

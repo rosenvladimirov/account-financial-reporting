@@ -4,10 +4,12 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Account Financial Reports',
-    'version': '11.0.2.6.0',
+    'version': '11.0.2.7.0',
     'category': 'Reporting',
     'summary': 'OCA Financial Reports',
-    'author': 'Camptocamp SA,'
+    'author': 'Rosen Vladimirov,'
+              'dXFactory Ltd.,'
+              'Camptocamp SA,'
               'initOS GmbH,'
               'redCOR AG,'
               'Eficent,'
@@ -17,7 +19,11 @@
         'account',
         'account_invoicing',
         'date_range',
+        'report_xml',
+        'report_csv', # is not ported for 12.0
         'report_xlsx',
+        'report_fillpdf',
+        'account_tag_menu',
     ],
     'data': [
         'wizard/aged_partner_balance_wizard_view.xml',
@@ -26,8 +32,8 @@
         'wizard/open_items_wizard_view.xml',
         'wizard/trial_balance_wizard_view.xml',
         'wizard/vat_report_wizard_view.xml',
-        'menuitems.xml',
-        'reports.xml',
+        'views/menuitems.xml',
+        'report/reports.xml',
         'report/templates/layouts.xml',
         'report/templates/aged_partner_balance.xml',
         'report/templates/general_ledger.xml',
@@ -35,14 +41,14 @@
         'report/templates/open_items.xml',
         'report/templates/trial_balance.xml',
         'report/templates/vat_report.xml',
-        'view/account_view.xml',
-        'view/report_template.xml',
-        'view/report_general_ledger.xml',
-        'view/report_journal_ledger.xml',
-        'view/report_trial_balance.xml',
-        'view/report_open_items.xml',
-        'view/report_aged_partner_balance.xml',
-        'view/report_vat_report.xml',
+        'views/account_view.xml',
+        'views/report_template.xml',
+        'views/report_general_ledger.xml',
+        'views/report_journal_ledger.xml',
+        'views/report_trial_balance.xml',
+        'views/report_open_items.xml',
+        'views/report_aged_partner_balance.xml',
+        'views/report_vat_report.xml',
     ],
     'installable': True,
     'application': True,

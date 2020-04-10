@@ -4,8 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 11.0+e-20191023\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-26 17:44+0000\n"
+"PO-Revision-Date: 2020-03-26 17:44+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,13 +21,137 @@ msgid "&gt; 120 d."
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_account_tax_tax_type_deal
+msgid "* The 'Automatic discovery' is used when do not have special tax for other types of the 'Type deal'.\n"
+"* The 'Product direct selling' is used when this tax is configured for standard deal only with products.\n"
+"* The 'Service direct selling' is used when this tax is configured for standard deal only with services.\n"
+"* The 'Product triangles deals' is used when this tax is configured for triangles deal only with products.\n"
+"* The 'Service triangles deals' is used when this tax is configured for triangles deal only with services.\n"
+""
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_lines_header
 msgid "1 - 30 d."
 msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
 msgid "10"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "11"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "12"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "13"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "14"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "15"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "16"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "17"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "18"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "19"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "20"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "21"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "22"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "23"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "24"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "25"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "26"
 msgstr ""
 
 #. module: account_financial_report
@@ -45,8 +171,33 @@ msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 msgid "<b>Taxes summary</b>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<br/>\n"
+"                                            <span>Адрес за кореспонденция: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<br/>\n"
+"                                            <span>Име / наименование: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+msgid "<br/><span>ЕИК: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+msgid "<br/><span>Период: </span>"
 msgstr ""
 
 #. module: account_financial_report
@@ -56,7 +207,1178 @@ msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_buttons
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+msgid "<span class=\"fa fa-download\"/> Export CSV"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_buttons
+msgid "<span class=\"fa fa-floppy-o\"/> Export XML"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_button_reports
+msgid "<span class=\"fa fa-list\"/> Purchase journal"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_button_reports
+msgid "<span class=\"fa fa-list\"/> Sale journal"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_button_reports
+msgid "<span class=\"fa fa-list-alt\"/> VAT Declation"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+msgid "<span class=\"fa fa-print\"/> Export XLSX"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_buttons
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
 msgid "<span class=\"fa fa-print\"/> Print"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_buttons
+msgid "<span class=\"fa fa-print\"/> Print FillPDF"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>\n"
+"                                        ДО и данък на получените доставки, ВОП, получените\n"
+"                                        доставки по чл.82, ал.2-5 ЗДДС и вноса, както и ДО\n"
+"                                        на получените доставки, използвани за извършване\n"
+"                                        на доставки по чл.69, ал.2 ЗДДС:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span> ЕИК: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span> Идентификационен номер: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span> Съгласно чл.92, ал.4 ЗДДС в 30-дневен срок от подаването на тази декларация</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span> Съгласно чл.92,</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span> приспаднат по реда на чл.92, ал.1 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>(Сума от кл.21 до кл.24)</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>(кл.20 - кл.40) по-голямо или равно на 0</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>(кл.20 - кл.40) по-малко или равно на 0</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>(кл41+кл42хкл.33+кл.43)</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>- с право на пълен данъчен кредит</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>- с право на частичен данъчен кредит</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на ВОД на стоки</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>-ДО на ВОП и ДО на получени доставки по чл.82, ал.2-5 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на ВОП и ДО на получени доставки</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>-ДО на доставки на услуги по чл.21, ал.2 с място\n"
+"                                                на изпълнение т-рията на друга държава членка</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на доставки на услуги по чл.21,</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на доставки по глава III от ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на доставки по чл.140, 146 и чл.173 ЗДДС*</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>-ДО на доставки по чл.69, ал.2 ЗДДС,\n"
+"                                    вкл.доставките при условия на дист. продажби\n"
+"                                    смясто на изпълнение т-рията на друга държава\n"
+"                                    членка, както и на доставки като посредник в\n"
+"                                    тристранна операция**</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на доставки по чл.69, ал.2 ЗДДС,</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>-ДО на обл.доставки, вкл. доставките при условия на дист.продажби с място на изпълнение на т-рията на страната</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на обл.доставки, вкл. доставките</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>-ДО на освободените доставки и освободените ВОП***</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>-ДО на освободените доставки и</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>01</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>11</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>12</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>13</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>14</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>15</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>16</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>17</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>18</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>19</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>20</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>21</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>22</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>23</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>24</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>30</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>31</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>32</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>33</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>40</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>41</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>42</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>43</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>50</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>60</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>70</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>71</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>80</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>81</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>82</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+msgid "<span>Booking to accounts</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_base
+msgid "<span>Movement</span>:"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_base
+msgid "<span>Opening Balance</span>:"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "<span>Total:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-02]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-03]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-04]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-05]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-06]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-07]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-08]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-09]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-10]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-11]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-12]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-13]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-14]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-15]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-16]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-17]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-18]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-19]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-20]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-21]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-22]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-23]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-24]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-25]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-26]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>[02-27]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-03]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-04]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-05]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-06]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-07]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-08]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-09]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-10]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-30]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-31]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-32]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-41]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-42]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-43]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-44]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>[03-8a]</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>_______________________</span><br/>\n"
+"                                <span>____________/_________г.</span><br/>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ВОП, получените доставки по чл.82, ал.2-5 ЗДДС и вноса без право на данъчен кредит или без данък</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Вид документ</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Вид на стоката/услугата</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Всичко начислен ДДС (Сума от кл.21 до кл.24)</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Всичко начислен ДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Входящ №:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Годишна корекция по чл.73, ал.8 (+/-)</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>Годишна корекция по чл.73,ал.8 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>ДДС за внасяне <br/> (кл.20 - кл.40) &gt;=0</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ДДС за внасяне</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>ДДС за възстановяване <br/> (кл.20 - кл.40) </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ДДС за възстановяване</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>ДДС с право на пълен данъчен кредит</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>ДДС с право на частичен данъчен кредит</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+msgid "<span>ДЕКЛАРАЦИЯ VIES</span><br/>\n"
+"                    <span> булстат </span><br/>\n"
+"                    <span> дата </span><br/>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+msgid "<span>ДНЕВНИК НА ПРОДАЖБИТЕ</span>\n"
+"                    <br/>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>ДО и данък на пол. д-ки, ВОП, пол.доставки по чл.82, ал.2-5 ЗДДС и вносът без право на данъчен кредит (ДК) или без данък</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>ДО и данък на получените доставки, ВОП, получените доставки по чл.82, ал.2-5 ЗДДС и вноса без право на данъчен кредит или без данък</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ДО и данък на получените доставки, ВОП, получените доставки по чл.82, ал.2-5 ЗДДС и вноса, както и ДО на получените доставки, използвани за извършване на доставки по чл.69, ал.2 ЗДДС:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ДО и данък на получените доставки,</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на ВОД</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на ВОП</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на дост. 0% по чл.140, чл.146 и чл.173, ал.1 и 4 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на дост.на услуги по чл.21,ал.2 ЗДДС, с място на изп...</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на дост.по чл.69, ал.3 ЗДДС, вкл. ДО на дост. при дист.</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на доставките като посредник в тристранна операция</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на доставките със ставка 0% по глава трета от ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на обл. доставки 20%, вкл...</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ДО на облагаемите доставки със ставка 9%</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО на освободени доставки и освободените ВОП</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>ДО на пол. д-ки, ВОП, пол. д-ки по чл.82, ал.2-5 ЗДДС, вносът, както и ДО на пол. д-ки, използвани за извършване на\n"
+"                                                    д-ки по чл.69, ал.2 ЗДДС с право на пълен ДК</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>ДО на пол. д-ки, ВОП, пол. д-ки по чл.82, ал.2-5 ЗДДС, вносът, както и ДО на пол. д-ки, използвани за извършване на\n"
+"                                                    д-ки по чл.69, ал.2 ЗДДС с право на част. ДК</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+msgid "<span>ДО на пол. д-ки, ВОП, пол. д-ки по чл.82, ал.2-5 ЗДДС, вносът, както и ДО на пол. д-ки, използвани за извършване на\n"
+"                                                д-ки по чл.69, ал.2 ЗДДС с право на пълен ДК</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+msgid "<span>ДО на пол. д-ки, ВОП, пол. д-ки по чл.82, ал.2-5 ЗДДС, вносът, както и ДО на пол. д-ки, използвани за извършване на\n"
+"                                                д-ки по чл.69, ал.2 ЗДДС с право на част. ДК</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ДО по пол.д-ки по чл. 82, ал.2-5 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "<span>ДО при придобиване на стоки от посредник в тристранна операция</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>ДО, подлежаща на облагане със ставка 0%:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>ДО, подлежаща на облагане със ставка 20%:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Данък за внасяне от кл.50, внесен ефективно</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Данък за внасяне от кл.50, приспаднат по реда на чл.92, ал.1 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Данък за внасяне от кл.50,</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Данъчен период:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Дата на документа</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Длъжност: </span><span/><span> Подпис и печат: ______________</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>До на облагаемите доставки със ставка 7%/8%</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Долуподписаният, </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Доставка по чл. 163а от ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>ИН на контрагента</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Идентификационен номер по ЗДДС: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Идентификационен номер: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Име на контрагента</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Клон</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Коефициент по чл.73, ал.5 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Нач.ДДС за дост. по к.11 и нач.данък 20%, предвиден в закона в др.случаи</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Начислен ДДС 7%/8%</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Начислен ДДС 9%</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Начислен ДДС за ВОП и доставки по к.14</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Начислен ДДС за ВОП и за получени доставки по чл.82, ал.2-5 ЗДДСС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Начислен ДДС за ВОП и за получени</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Начислен ДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Начислен данък за доставки на стоки и услуги за лични нужди****</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Начислен данък за доставки на стоки и услуги за лични нужди</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Начислен данък за доставки на стоки и</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Номер на документа</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Номер по ред</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Общ размер на ДО за облагане с ДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Общ размер на данъчните основи за облагане с ДДС (сума от кл.11 до кл.16) </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Общ размер на данъчните основи за</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Общо данъчен кредит (кл41+кл42хкл.33+кл.43)</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Общо данъчен кредит</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "<span>Период: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Съгласно чл.92, ал.1 ЗДДС в 30-дневен срок от подаването на тази декларация</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>Съгласно чл.92, ал.3 ЗДДС в 30-дневен срок от подаването на тази декларация</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>Съгласно чл.92,</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "<span>ТД/офис:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ТД/офис:</span><br/>\n"
+"                                <span>Входящ №</span><br/>\n"
+"                                <span>Период:</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ал.1 ЗДДС в 30-дневен срок от подаването на тази декларация</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ал.2 с място на изпълнение т-рията на друга държава членка</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ал.3 ЗДДС в 30-дневен срок от подаването на тази декларация</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>ал.4 ЗДДС в 30-дневен срок от подаването на тази декларация</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>вкл.доставките при условия на дист. продажби смясто на изпълнение т-рията на друга държава членка, както и на доставки като посредник в тристранна операция**</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>внесен ефективно</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>декларирам, че:</span><br/>\n"
+"                            <span>  представлявам лицето, посочено в кл.А, и посочената в този формуляр информация е вярна и точна.</span><br/>\n"
+"                            <span>  са налице обстоятелства по чл.92, ал.3 и 4 ЗДДС. Известно ми е, че за неверни данни нося отговорност по чл.313 НК</span><br/>\n"
+"                            <span>Дата на съставяне: </span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>доставки по чл.82, ал.2-5 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>облагане с ДДС (сума от кл.11 до кл.16)</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>освободените ВОП***</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>по чл.82, ал.2-5 ЗДДС</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>при условия на дист.продажби с място на изпълнение на т-рията на страната</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<span>услуги за лични нужди****</span>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<strong>ДО, подлежаща на облагане със ставка 0%:</strong>"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "<strong>ДО, подлежаща на облагане със ставка 20%:</strong>"
 msgstr ""
 
 #. module: account_financial_report
@@ -77,10 +1399,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_ids
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_account
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_ids
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_account_id
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_move_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_lines_header
@@ -94,14 +1419,25 @@ msgid "Account Code"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model,name:account_financial_report.model_account_move
+msgid "Account Entry"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_account_group_id
 msgid "Account Group"
 msgstr ""
 
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/journal_ledger_xlsx.py:38
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
 #, python-format
 msgid "Account Name"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model,name:account_financial_report.model_account_account_tag
+msgid "Account Tag"
 msgstr ""
 
 #. module: account_financial_report
@@ -131,6 +1467,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_child_account_ids
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_compute_account_ids
 msgid "Accounts"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_accounttags_ids
+msgid "Accounttags"
 msgstr ""
 
 #. module: account_financial_report
@@ -241,7 +1582,7 @@ msgid "Aged Partner Balance XLSX"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:64
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:67
 #, python-format
 msgid "All"
 msgstr ""
@@ -289,6 +1630,7 @@ msgid "All posted entries"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 msgid "Amount Cur."
 msgstr ""
@@ -331,13 +1673,40 @@ msgid "Amount cur."
 msgstr ""
 
 #. module: account_financial_report
+#: selection:account.tax,tax_type_deal:0
+#: code:addons/account_financial_report/models/account.py:51
+#, python-format
+msgid "Automatic discovery"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_bal
+msgid "Bal"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 msgid "Balance"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+msgid "Balance Amount"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_base
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_base
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_base
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_base
+msgid "Base"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 msgid "Base Amount"
 msgstr ""
@@ -380,6 +1749,34 @@ msgid "Based on"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_date_from
+msgid "Begin FY"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/models/account.py:28
+#, python-format
+msgid "Boot Tax base and tax"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/models/account.py:27
+#, python-format
+msgid "Boot Tax base and tax EU deals"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:report_vat_report,based_on:0
+#: selection:vat.report.wizard,based_on:0
+msgid "Bulgarian Tax Tags"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_account_tag_csv_field
+msgid "CSV Column for net/tax"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.aged_partner_balance_wizard
 #: model:ir.ui.view,arch_db:account_financial_report.general_ledger_wizard
 #: model:ir.ui.view,arch_db:account_financial_report.journal_ledger_wizard
@@ -407,7 +1804,7 @@ msgid "Centralized"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/report/general_ledger.py:1432
+#: code:addons/account_financial_report/report/general_ledger.py:1437
 #, python-format
 msgid "Centralized Entries"
 msgstr ""
@@ -430,13 +1827,27 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_account_code
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_code
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_code
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_code
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_code
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_code
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_code
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_code
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_code
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_lines_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
 #, python-format
 msgid "Code"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_move_line_tax_sign
+msgid "Coefficient"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Comany UIC"
 msgstr ""
 
 #. module: account_financial_report
@@ -451,7 +1862,10 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_company_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_company_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_company_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_company_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_company_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_company_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_company_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_company_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_company_id
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_company_id
@@ -484,6 +1898,11 @@ msgid "Computed Accounts: Use when the account group have codes\n"
 msgstr ""
 
 #. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Contact name"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
 msgid "Cost\n"
 "                            center"
@@ -498,6 +1917,12 @@ msgstr ""
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:29
 #, python-format
 msgid "Cost center"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/models/account.py:26
+#, python-format
+msgid "Coupled tax"
 msgstr ""
 
 #. module: account_financial_report
@@ -524,10 +1949,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_create_uid
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_create_uid
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_create_uid
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_create_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_create_uid
@@ -559,10 +1987,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_create_date
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_create_date
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_create_date
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_create_date
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_create_date
@@ -580,13 +2011,24 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_credit
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_credit
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_credit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_credit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_credit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_credit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_credit
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_lines_header
 #, python-format
 msgid "Credit"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_csv_field
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_csv_field
+msgid "Csv Field"
 msgstr ""
 
 #. module: account_financial_report
@@ -642,6 +2084,7 @@ msgstr ""
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:45
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:86
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_lines_header
@@ -673,6 +2116,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_currency_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_currency_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_currency_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_currency_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_currency_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_currency_id
 #, python-format
@@ -699,13 +2143,14 @@ msgstr ""
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:20
 #: code:addons/account_financial_report/report/journal_ledger_xlsx.py:25
 #: code:addons/account_financial_report/report/open_items_xlsx.py:18
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:73
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:76
 #: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_date
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_move_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 #, python-format
@@ -730,6 +2175,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_general_ledger_report_wizard_date_from
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_date_from
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_date_from
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_date_from
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_date_from
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_date_from
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_date_from
@@ -741,6 +2187,8 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_general_ledger_report_wizard_date_to
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_date_to
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_date_to
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_date_to
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_date_to
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_date_to
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_date_to
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_date_to
@@ -766,6 +2214,9 @@ msgstr ""
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_general_ledger_report_wizard_date_range_id
 #: model:ir.model.fields,field_description:account_financial_report.field_journal_ledger_report_wizard_date_range_id
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_date_range_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_date_range_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_date_range_id
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_date_range_id
 #: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_date_range_id
 msgid "Date range"
@@ -779,6 +2230,14 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_filters
 #, python-format
 msgid "Date range filter"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_date_range_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_date_range_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_date_range_name
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_date_range_name
+msgid "Date range name"
 msgstr ""
 
 #. module: account_financial_report
@@ -797,8 +2256,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_debit
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_debit
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_debit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_debit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_debit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_debit
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_debit
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_lines_header
@@ -807,8 +2271,14 @@ msgid "Debit"
 msgstr ""
 
 #. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Departament code"
+msgstr ""
+
+#. module: account_financial_report
 #: code:addons/account_financial_report/report/journal_ledger_xlsx.py:102
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 #, python-format
 msgid "Description"
@@ -817,6 +2287,11 @@ msgstr ""
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_tax_detail
 msgid "Detail Taxes"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_account_tax_parent_type_tax_use
+msgid "Determines where the tax is selectable. Note : 'None' means a tax can't be used by itself, however it can still be used in a group."
 msgstr ""
 
 #. module: account_financial_report
@@ -851,15 +2326,33 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_display_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_display_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_display_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_display_name
 #: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_display_name
 msgid "Display Name"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_open_items_report_wizard_show_all_ob
+msgid "Display all account opened balances"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_open_items_report_wizard_without_vat
+msgid "Display all amounts in NET sale without VAT"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_open_items_report_wizard_show_more
+msgid "Display extra info"
 msgstr ""
 
 #. module: account_financial_report
@@ -877,7 +2370,6 @@ msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_move_lines
-#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 msgid "Due\n"
 "                        date"
 msgstr ""
@@ -885,11 +2377,13 @@ msgstr ""
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/aged_partner_balance_xlsx.py:70
 #: code:addons/account_financial_report/report/open_items_xlsx.py:24
+#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 #, python-format
 msgid "Due date"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_date_to
 #: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_date_to
 msgid "End Date"
 msgstr ""
@@ -906,7 +2400,7 @@ msgid "Ending\n"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/report/general_ledger_xlsx.py:181
+#: code:addons/account_financial_report/report/general_ledger_xlsx.py:180
 #: code:addons/account_financial_report/report/open_items_xlsx.py:118
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:38
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:53
@@ -940,6 +2434,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_entry
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_move_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 #, python-format
@@ -947,9 +2442,14 @@ msgid "Entry"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:72
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:75
 #, python-format
 msgid "Entry number"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_wizard
+msgid "Export FillPDF"
 msgstr ""
 
 #. module: account_financial_report
@@ -970,6 +2470,69 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_financial_report.trial_balance_wizard
 #: model:ir.ui.view,arch_db:account_financial_report.vat_report_wizard
 msgid "Export XLSX"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_fy_date_from
+msgid "FY Start Date"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_fy_vat
+msgid "FY VAT amount for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_fy_bal
+msgid "FY balance value for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_fy_credit_note
+msgid "FY credit notes amount for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.account_tag_view_bg_form
+msgid "Fields"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_financial_report_abstract_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_account_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_partner_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_account_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_partner_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_tax_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_declar_vies_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_deklar_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_purchases_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_sales_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_vies_fillpdf
+msgid "Fillpdf"
 msgstr ""
 
 #. module: account_financial_report
@@ -1042,24 +2605,28 @@ msgstr ""
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_final_amount_residual
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_final_amount_residual
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_final_amount_residual
 msgid "Final Amount Residual"
 msgstr ""
 
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_final_amount_residual_currency
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_final_amount_residual_currency
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_final_amount_residual_currency
 msgid "Final Amount Residual Currency"
 msgstr ""
 
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_final_amount_total_due
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_final_amount_total_due
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_final_amount_total_due
 msgid "Final Amount Total Due"
 msgstr ""
 
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_final_amount_total_due_currency
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_final_amount_total_due_currency
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_final_amount_total_due_currency
 msgid "Final Amount Total Due Currency"
 msgstr ""
 
@@ -1092,6 +2659,37 @@ msgid "Final Debit"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_fy_credit_note
+msgid "Fiscal Year Credit notes"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_fy_vat
+msgid "Fiscal Year VAT"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_fy_bal
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_opening_bal
+msgid "Fiscal Year balance"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_fy_credit
+msgid "Fiscal Year credit"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_fy_debit
+msgid "Fiscal Year debit"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Fiscal period"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_journal_ledger_report_wizard_foreign_currency
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_foreign_currency
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_foreign_currency
@@ -1102,7 +2700,9 @@ msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_filters
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_filters
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
 msgid "From:"
 msgstr ""
 
@@ -1115,6 +2715,11 @@ msgid "From: %s To: %s"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_fy_date_from
+msgid "Fy Date From"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_general_ledger_report_wizard_fy_start_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_fy_start_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_fy_start_date
@@ -1124,7 +2729,6 @@ msgstr ""
 
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:15
-#: model:ir.actions.act_window,name:account_financial_report.act_action_general_ledger_wizard_partner_relation
 #: model:ir.actions.act_window,name:account_financial_report.action_general_ledger_wizard
 #: model:ir.actions.client,name:account_financial_report.action_report_general_ledger
 #: model:ir.actions.report,name:account_financial_report.action_report_general_ledger_html
@@ -1156,6 +2760,87 @@ msgid "General Ledger can be computed only if selected company have only one una
 msgstr ""
 
 #. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get Document date"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get Document number"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get account move date"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get account move narration"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get account move number"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get account move ref"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get company VAT"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get company address"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get company name"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get line count in purchase"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get line count in sales"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get line row"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get partner VAT"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get partner name"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.account.tag,type_info:0
+msgid "Get type document"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_group_by_period
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_group_by_period
+msgid "Group By"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_group_option
 msgid "Group Option"
 msgstr ""
@@ -1163,6 +2848,158 @@ msgstr ""
 #. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_journal_ledger_report_wizard_group_option
 msgid "Group entries by"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_financial_report_abstract_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_account_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_partner_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_account_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_partner_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_tax_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_declar_vies_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_deklar_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_purchases_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_sales_has_report_csv
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_vies_has_report_csv
+msgid "Has Report Csv"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_financial_report_abstract_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_account_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_partner_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_account_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_partner_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_tax_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_declar_vies_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_deklar_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_purchases_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_sales_has_report_fillpdf
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_vies_has_report_fillpdf
+msgid "Has Report Fillpdf"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_financial_report_abstract_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_account_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_partner_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_account_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_partner_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_tax_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_declar_vies_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_deklar_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_purchases_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_sales_has_report_qweb
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_vies_has_report_qweb
+msgid "Has Report Qweb"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_financial_report_abstract_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_account_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_partner_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_account_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_partner_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_tax_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_declar_vies_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_deklar_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_purchases_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_sales_has_report_xml
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_vies_has_report_xml
+msgid "Has Report Xml"
 msgstr ""
 
 #. module: account_financial_report
@@ -1243,9 +3080,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_id
@@ -1294,7 +3134,7 @@ msgid "Initial Debit"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/report/general_ledger_xlsx.py:169
+#: code:addons/account_financial_report/report/general_ledger_xlsx.py:168
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:22
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:49
 #: code:addons/account_financial_report/report/trial_balance_xlsx.py:63
@@ -1318,7 +3158,7 @@ msgstr ""
 #: code:addons/account_financial_report/report/aged_partner_balance_xlsx.py:66
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:22
 #: code:addons/account_financial_report/report/open_items_xlsx.py:20
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:79
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:82
 #: model:ir.actions.client,name:account_financial_report.action_report_journal_ledger
 #: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_move_line_journal
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_journal
@@ -1350,6 +3190,7 @@ msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 msgid "Journal Ledger -"
 msgstr ""
 
@@ -1411,10 +3252,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner___last_update
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report___last_update
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag___last_update
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag___last_update
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard___last_update
@@ -1445,10 +3289,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_write_uid
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_write_uid
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_write_uid
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_write_uid
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_write_uid
@@ -1480,10 +3327,13 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_move_line_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_write_date
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_write_date
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_write_date
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_write_date
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_write_date
@@ -1525,6 +3375,14 @@ msgid "Matching Number"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_month
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_month
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_month
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_month
+msgid "Month"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_move_id
 msgid "Move"
 msgstr ""
@@ -1548,6 +3406,17 @@ msgid "Move Target"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_fy_credit
+msgid "Movement credit value for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_fy_debit
+msgid "Movement debit value for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal
 msgid "Moves"
 msgstr ""
@@ -1562,23 +3431,33 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_name
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_name
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 #: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
 #, python-format
 msgid "Name"
 msgstr ""
 
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/vat_report_xlsx.py:19
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_net
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_net
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_net
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_net
 #: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
 #, python-format
 msgid "Net"
 msgstr ""
@@ -1595,7 +3474,7 @@ msgid "No"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:80
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:83
 #, python-format
 msgid "No group"
 msgstr ""
@@ -1614,16 +3493,22 @@ msgid "No limit"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/report/general_ledger.py:757
-#: code:addons/account_financial_report/report/general_ledger.py:1136
-#: code:addons/account_financial_report/report/open_items.py:306
-#: code:addons/account_financial_report/report/open_items.py:555
+#: code:addons/account_financial_report/report/general_ledger.py:762
+#: code:addons/account_financial_report/report/general_ledger.py:1141
+#: code:addons/account_financial_report/report/open_items.py:559
+#: code:addons/account_financial_report/report/open_items.py:588
+#: code:addons/account_financial_report/report/open_items.py:887
 #, python-format
 msgid "No partner allocated"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:66
+#: selection:account.tax,parent_type_tax_use:0
+msgid "None"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:69
 #, python-format
 msgid "Not Posted"
 msgstr ""
@@ -1655,11 +3540,21 @@ msgid "Older"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_payable_vat_only
+msgid "Only Payable"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_aged_partner_balance_only_posted_moves
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_only_posted_moves
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_only_posted_moves
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_only_posted_moves
 msgid "Only Posted Moves"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_receivable_vat_only
+msgid "Only receivable"
 msgstr ""
 
 #. module: account_financial_report
@@ -1680,11 +3575,6 @@ msgid "Open Items -"
 msgstr ""
 
 #. module: account_financial_report
-#: model:ir.actions.act_window,name:account_financial_report.act_action_open_items_wizard_partner_relation
-msgid "Open Items Partner"
-msgstr ""
-
-#. module: account_financial_report
 #: model:ir.model,name:account_financial_report.model_open_items_report_wizard
 msgid "Open Items Report Wizard"
 msgstr ""
@@ -1692,6 +3582,31 @@ msgstr ""
 #. module: account_financial_report
 #: model:ir.actions.report,name:account_financial_report.action_report_open_items_xlsx
 msgid "Open Items XLSX"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_opening_bal
+msgid "Opening balance value for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_opening_credit
+msgid "Opening credit"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_opening_credit
+msgid "Opening credit value for this account."
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_opening_debit
+msgid "Opening debit"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,help:account_financial_report.field_report_open_items_partner_opening_debit
+msgid "Opening debit value for this account."
 msgstr ""
 
 #. module: account_financial_report
@@ -1707,8 +3622,35 @@ msgid "Original"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_account_tag_pdf_field_net
+msgid "PDF Field for net"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_account_tag_pdf_field_tax
+msgid "PDF Field for tax"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_parent_id
 msgid "Parent"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_parent_id
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_parent_id
+msgid "Parent Tag"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_tax_parent_type_tax_use
+msgid "Parent Tax Scope"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_parent_type_tax_use
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_parent_type_tax_use
+msgid "Parent Type Tax Use"
 msgstr ""
 
 #. module: account_financial_report
@@ -1732,9 +3674,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_partner_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_partner_ids
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_partner_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_partner_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_partner_id
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_lines_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_move_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_lines_header
@@ -1749,9 +3694,20 @@ msgid "Partner\n"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/report/general_ledger_xlsx.py:166
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "Partner Code"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/report/general_ledger_xlsx.py:165
 #, python-format
 msgid "Partner Initial balance"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_partner_move_line_ids
+msgid "Partner Move Line"
 msgstr ""
 
 #. module: account_financial_report
@@ -1761,7 +3717,7 @@ msgid "Partner cumul aged balance"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/report/general_ledger_xlsx.py:178
+#: code:addons/account_financial_report/report/general_ledger_xlsx.py:177
 #: code:addons/account_financial_report/report/open_items_xlsx.py:114
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_ending_cumul
 #: model:ir.ui.view,arch_db:account_financial_report.report_open_items_ending_cumul
@@ -1770,11 +3726,34 @@ msgid "Partner ending balance"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "Partner name"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_aged_partner_balance_wizard_payable_accounts_only
 #: model:ir.model.fields,field_description:account_financial_report.field_general_ledger_report_wizard_payable_accounts_only
 #: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_payable_accounts_only
 #: model:ir.model.fields,field_description:account_financial_report.field_trial_balance_report_wizard_payable_accounts_only
 msgid "Payable Accounts Only"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_payable_vat_only
+msgid "Payable Vat Only"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_pdf_field_net
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_pdf_field_net
+msgid "Pdf Field Net"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_pdf_field_tax
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_pdf_field_tax
+msgid "Pdf Field Tax"
 msgstr ""
 
 #. module: account_financial_report
@@ -1835,9 +3814,51 @@ msgid "Periods"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:65
+#: model:ir.model.fields,help:account_financial_report.field_account_move_use_refund
+msgid "Please checked it if is refund or discount"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/wizard/journal_ledger_wizard.py:68
 #, python-format
 msgid "Posted"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.tax,tax_type_deal:0
+#: code:addons/account_financial_report/models/account.py:52
+#, python-format
+msgid "Product direct selling"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.tax,tax_type_deal:0
+#: code:addons/account_financial_report/models/account.py:54
+#, python-format
+msgid "Product triangles deals"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
+msgid "Purchase"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_all
+msgid "Purchase Report"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.tax,parent_type_tax_use:0
+msgid "Purchases"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_quarter
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_quarter
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_quarter
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_quarter
+msgid "Quarter"
 msgstr ""
 
 #. module: account_financial_report
@@ -1856,9 +3877,13 @@ msgid "Receivable Accounts Only"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_receivable_vat_only
+msgid "Receivable Vat Only"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_move_lines
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
-#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
 msgid "Ref -\n"
 "                        Label"
 msgstr ""
@@ -1868,9 +3893,15 @@ msgstr ""
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:28
 #: code:addons/account_financial_report/report/journal_ledger_xlsx.py:50
 #: code:addons/account_financial_report/report/open_items_xlsx.py:23
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #, python-format
 msgid "Ref - Label"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_move_use_refund
+msgid "Refund/Discount"
 msgstr ""
 
 #. module: account_financial_report
@@ -1882,7 +3913,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_report_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_report_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_account_report_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_report_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_report_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_report_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_report_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_report_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_report_id
 msgid "Report"
 msgstr ""
@@ -1892,7 +3927,9 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_move_line_report_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_partner_report_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_partner_report_account_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_report_account_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_partner_report_account_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_report_account_id
 msgid "Report Account"
 msgstr ""
 
@@ -1931,6 +3968,7 @@ msgid "Report Partner"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_report_tax_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_report_tax_id
 msgid "Report Tax"
 msgstr ""
@@ -1939,6 +3977,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_report_tax_line_ids
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_ids
 msgid "Report Tax Line"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.account_tag_view_bg_form
+msgid "Reports configuration"
 msgstr ""
 
 #. module: account_financial_report
@@ -1953,8 +3996,43 @@ msgid "Residual"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "SERVICE Name"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
+msgid "Sale"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.tax,parent_type_tax_use:0
+msgid "Sales"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_all
+msgid "Sales Report"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_trial_balance_account_sequence
 msgid "Sequence"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.tax,tax_type_deal:0
+#: code:addons/account_financial_report/models/account.py:53
+#, python-format
+msgid "Service direct selling"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:account.tax,tax_type_deal:0
+#: code:addons/account_financial_report/models/account.py:55
+#, python-format
+msgid "Service triangles deals"
 msgstr ""
 
 #. module: account_financial_report
@@ -1966,6 +4044,11 @@ msgstr ""
 #: model:ir.ui.view,arch_db:account_financial_report.report_trial_balance_filters
 #, python-format
 msgid "Show"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_show_all_ob
+msgid "Show All Ob"
 msgstr ""
 
 #. module: account_financial_report
@@ -1991,6 +4074,16 @@ msgid "Show Partner Details"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_show_all_ob
+msgid "Show all accounts in OB"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_without_vat
+msgid "Show amount withot VAT"
+msgstr ""
+
+#. module: account_financial_report
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:93
 #: model:ir.model.fields,field_description:account_financial_report.field_general_ledger_report_wizard_show_analytic_tags
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_filters
@@ -2010,6 +4103,11 @@ msgid "Show foreign currency"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_show_more
+msgid "Show more column"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_sort_option
 msgid "Sort Option"
 msgstr ""
@@ -2020,6 +4118,7 @@ msgid "Sort entries by"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_open_items_report_wizard_date_from
 #: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_date_from
 msgid "Start Date"
 msgstr ""
@@ -2061,20 +4160,30 @@ msgstr ""
 
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/vat_report_xlsx.py:23
+#: model:ir.model,name:account_financial_report.model_account_tax
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_journal_tax_line_tax_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_move_line_tax_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_report_tax_line_tax_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_tax
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_tax_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_tax_ids
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_tax
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_tax_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_ids
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_tax
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_tax_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_tax
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_tax_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_tax_ids
 #: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
 #, python-format
 msgid "Tax"
 msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_all_taxes
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_taxes
 msgid "Tax Amount"
 msgstr ""
@@ -2115,6 +4224,11 @@ msgid "Tax Detail"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_group_ids
+msgid "Tax Group"
+msgstr ""
+
+#. module: account_financial_report
 #: selection:report_vat_report,based_on:0
 #: selection:vat.report.wizard,based_on:0
 msgid "Tax Groups"
@@ -2128,14 +4242,62 @@ msgstr ""
 
 #. module: account_financial_report
 #: selection:report_vat_report,based_on:0
-#: selection:vat.report.wizard,based_on:0
 msgid "Tax Tags"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:vat.report.wizard,based_on:0
+msgid "Tax Tags (VAT Report)"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:report_vat_report,based_on:0
+msgid "Tax Tags with VAT number grouping"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:vat.report.wizard,based_on:0
+msgid "Tax Tags with VAT number grouping (VIES)"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/models/account.py:23
+#, python-format
+msgid "Tax base"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/models/account.py:25
+#, python-format
+msgid "Tax base (credit)"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/models/account.py:24
+#, python-format
+msgid "Tax base (debit)"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "Tax base for EU/Deal"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:report_vat_report,based_on:0
+#: selection:vat.report.wizard,based_on:0
+msgid "Tax positions"
 msgstr ""
 
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/general_ledger_xlsx.py:24
 #: code:addons/account_financial_report/report/journal_ledger_xlsx.py:55
+#: model:ir.ui.view,arch_db:account_financial_report.account_tag_view_bg_form
 #: model:ir.ui.view,arch_db:account_financial_report.report_general_ledger_lines
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 #, python-format
 msgid "Taxes"
@@ -2148,11 +4310,15 @@ msgid "Taxes Description"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_taxgroup_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_taxgroup_id
 msgid "Taxgroup"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_taxtag_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_taxtag_id
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_taxtag_id
 #: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_taxtag_id
 msgid "Taxtag"
 msgstr ""
@@ -2163,19 +4329,30 @@ msgid "Taxtags"
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/general_ledger_wizard.py:196
+#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_lines
+msgid "Text"
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/wizard/general_ledger_wizard.py:160
 #, python-format
 msgid "The Company in the General Ledger Report Wizard and in Date Range must be the same."
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/trial_balance_wizard.py:165
+#: code:addons/account_financial_report/wizard/open_items_wizard.py:153
+#, python-format
+msgid "The Company in the Open Item Wizard and in Date Range must be the same."
+msgstr ""
+
+#. module: account_financial_report
+#: code:addons/account_financial_report/wizard/trial_balance_wizard.py:163
 #, python-format
 msgid "The Company in the Trial Balance Report Wizard and in Date Range must be the same."
 msgstr ""
 
 #. module: account_financial_report
-#: code:addons/account_financial_report/wizard/vat_report_wizard.py:61
+#: code:addons/account_financial_report/wizard/vat_report_wizard.py:78
 #, python-format
 msgid "The Company in the Vat Report Wizard and in Date Range must be the same."
 msgstr ""
@@ -2195,9 +4372,15 @@ msgstr ""
 #. module: account_financial_report
 #: code:addons/account_financial_report/report/aged_partner_balance_xlsx.py:161
 #: code:addons/account_financial_report/report/aged_partner_balance_xlsx.py:203
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_total_ids
 #: model:ir.ui.view,arch_db:account_financial_report.report_aged_partner_balance_account_ending_cumul
 #, python-format
 msgid "Total"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_open_items_ending_cumul_total
+msgid "Total Open balance"
 msgstr ""
 
 #. module: account_financial_report
@@ -2232,8 +4415,41 @@ msgid "Trial Balance can be computed only if selected company have only one unaf
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_account_tag_type_info
+msgid "Type Info"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_type_tax_use
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_type_tax_use
+msgid "Type Tax Use"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_type_taxes
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_type_taxes
+msgid "Type Taxes"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_tax_tax_type_deal
+msgid "Type deal"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_accounts_only
+msgid "Type of report"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model.fields,field_description:account_financial_report.field_report_general_ledger_unaffected_earnings_account
 msgid "Unaffected Earnings Account"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "Until:"
 msgstr ""
 
 #. module: account_financial_report
@@ -2243,18 +4459,36 @@ msgid "Use this filter to hide an account or a partner with an ending balance at
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base_tax
+msgid "VAT (TAX) Report -"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.actions.report,name:account_financial_report.action_report_vat_report_bgdeclar
+msgid "VAT Declation"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_base
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "VAT Id"
+msgstr ""
+
+#. module: account_financial_report
 #: code:addons/account_financial_report/report/vat_report_xlsx.py:12
 #: model:ir.actions.act_window,name:account_financial_report.action_vat_report_wizard
 #: model:ir.actions.client,name:account_financial_report.action_report_vat_report
 #: model:ir.actions.report,name:account_financial_report.action_report_vat_report_html
 #: model:ir.actions.report,name:account_financial_report.action_report_vat_report_qweb
 #: model:ir.ui.menu,name:account_financial_report.menu_vat_report_wizard
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_all
 #, python-format
 msgid "VAT Report"
 msgstr ""
 
 #. module: account_financial_report
 #: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_all
 msgid "VAT Report -"
 msgstr ""
 
@@ -2264,8 +4498,33 @@ msgid "VAT Report Options"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.actions.report,name:account_financial_report.action_report_vat_report_bgvies
+msgid "VAT Report VIES"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.actions.report,name:account_financial_report.action_report_vat_report_xlsx
 msgid "VAT Report XLSX"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.actions.report,name:account_financial_report.action_report_vat_report_bgpurchases
+msgid "VAT Report purchase"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.actions.report,name:account_financial_report.action_report_vat_report_bgsales
+msgid "VAT Report sales"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_all
+msgid "VIES Report"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_vat_report_vies_vies_qweb
+msgid "VIES Report -"
 msgstr ""
 
 #. module: account_financial_report
@@ -2287,6 +4546,66 @@ msgstr ""
 #: model:ir.model.fields,field_description:account_financial_report.field_journal_ledger_report_wizard_with_account_name
 #: model:ir.model.fields,field_description:account_financial_report.field_report_journal_ledger_with_account_name
 msgid "With Account Name"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_pdf_detail
+#: model:ir.model.fields,field_description:account_financial_report.field_vat_report_wizard_pdf_detail
+msgid "Without PDF-Views"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_open_items_without_vat
+msgid "Without Vat"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_account_account_tag_xml_tag
+msgid "XML Tag for net/tax"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_xml_tag
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_xml_tag
+msgid "Xml Tag"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:report_vat_report,group_by_period:0
+msgid "YEAR-MONTH"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:report_vat_report,group_by_period:0
+msgid "YEAR-QUARTER"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:report_vat_report,group_by_period:0
+msgid "YEAR-QUARTER-MONTH"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_account_taxtag_year
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_groups_year
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_tax_year
+#: model:ir.model.fields,field_description:account_financial_report.field_report_vat_report_taxtag_year
+msgid "Year"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:vat.report.wizard,group_by_period:0
+msgid "Year-Month"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:vat.report.wizard,group_by_period:0
+msgid "Year-Quarter"
+msgstr ""
+
+#. module: account_financial_report
+#: selection:vat.report.wizard,group_by_period:0
+msgid "Year-Quarter-Mount"
 msgstr ""
 
 #. module: account_financial_report
@@ -2451,6 +4770,11 @@ msgid "report_open_items_partner"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model,name:account_financial_report.model_report_open_items_total
+msgid "report_open_items_total"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model,name:account_financial_report.model_report_trial_balance
 msgid "report_trial_balance"
 msgstr ""
@@ -2471,6 +4795,16 @@ msgid "report_vat_report"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.model,name:account_financial_report.model_report_vat_report_account_taxtag
+msgid "report_vat_report_account_taxtag"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.model,name:account_financial_report.model_report_vat_report_groups
+msgid "report_vat_report_groups"
+msgstr ""
+
+#. module: account_financial_report
 #: model:ir.model,name:account_financial_report.model_report_vat_report_tax
 msgid "report_vat_report_tax"
 msgstr ""
@@ -2481,6 +4815,7 @@ msgid "report_vat_report_taxtag"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal
 msgid "to"
 msgstr ""
@@ -2491,22 +4826,89 @@ msgid "vat.report.wizard"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 msgid "width: 23.24%;"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 msgid "width: 23.78%;"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 msgid "width: 38.92%;"
 msgstr ""
 
 #. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_base_qweb
 #: model:ir.ui.view,arch_db:account_financial_report.report_journal_ledger_journal_table_header
 msgid "width: 8.11%;"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "А.Данни за регистрираното лице"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "ДАНЪК ВЪРХУ ДОБАВЕНАТА СТОЙНОСТ"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_purchases_purchases_qweb
+msgid "ДНЕВНИК НА ПОКУПКИТЕ"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_sales_sales_qweb
+msgid "ДНЕВНИК НА ПРОДАЖБИТЕ"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "Раздел А: Данни за начислен данък върху добавената стойност"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "Раздел Б: Данни за упражнено право на данъчен кредит"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "Раздел В: Резултат за периода"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "Раздел Г: ДДС за внасяне"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "Раздел Д: ДДС, подлежащ на възстановяване"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_base
+msgid "СПРАВКА-ДЕКЛАРАЦИЯ"
+msgstr ""
+
+#. module: account_financial_report
+#: model:ir.ui.view,arch_db:account_financial_report.vat_report_deklar_qweb
+msgid "СПРАВКА-ДЕКЛАРАЦИЯ<br/>\n"
+"                                ДАНЪК ВЪРХУ ДОБАВЕНАТА СТОЙНОСТ"
 msgstr ""
 

@@ -8,38 +8,46 @@
         </xpath>
     </template>
 
-    <template id="customer_outstanding_statement.statement_document">
+<template id="customer_outstanding_statement.statement_document">
         <t t-call="web.external_layout">
             <div class="page">
                 <div class="row">
-                    <div name="statement_address" class="col-xs-5 col-xs-offset-7">
-                        <address t-esc="o"
-                                 t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
-                        <div t-if="o.vat" class="mt16"><t t-esc="o.country_id.vat_label or 'TIN'"/>:
-                            <span t-field="o.vat"/>
+                    <div class="o_bulgaria_name">
+                        <div class="col-xs-12 pull-right">
+                            <h4>Document: Outstanding Statement of: <span t-esc="Date[o.id]"/><t t-if="o.ref"> Customer ref: <span t-field="o.ref"/></t></h4>
                         </div>
                     </div>
-                    <h4 style="padding-left:15em;padding-top:2em">
-                        Outstanding Statement
-                    </h4>
-                    <p>
-                        Date: <span t-esc="Date[o.id]"/><br/><!--Today-->
-                        <t t-if="o.ref">Partner ref:<span t-field="o.ref"/></t>
-                    </p>
-
-                    <t t-if="Lines[o.id]">
-                        <br/>
-                        <t t-foreach="Lines[o.id]" t-as="currency">
-                            <br t-if="not currency_first"/>
-                            <p>
-                                <span t-esc="'Customer' if  account_type == 'receivable' else 'Supplier'"/>
-                                Outstanding Statement at
-                                <span t-esc="Date_end[o.id]"/>
-                                in <span t-esc="Currencies[o.id][currency].name"/>:
-
-                            </p>
-                            <table class="table table-condensed table-statement">
-                                <thead>
+                </div>
+                <div class="row mt8">
+                    <div class="col-xs-5 col-xs-offset-7 pull-right" style="margin-right: 15px;" id="informations">
+                        <strong>То company:</strong>
+                        <div t-esc="o"
+                             t-options='{"widget": "contact", "fields": ["address", "name", "phone"], "no_marker": True, "phone_icons": True}'/>
+                        <div t-if="o.vat"><t t-esc="o.country_id.vat_label or 'TIN'"/>: <span t-field="o.vat"/></div>
+                    </div>
+                </div>
+                <t t-if="Lines[o.id]">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <strong><span t-field="res_company.with_context(lang=o.lang).overdue_msg"/></strong>
+                        </div>
+                    </div>
+                    <t t-foreach="Lines[o.id]" t-as="currency">
+                        <br t-if="not currency_first"/>
+                        <div class="row mt8">
+                            <div class="col-xs-12">
+                                <p>
+                                    <span t-esc="'Customer' if  account_type == 'receivable' else 'Supplier'"/>
+                                    Outstanding Statement at
+                                    <span t-esc="Date_end[o.id]"/>
+                                    in <span t-esc="Currencies[o.id][currency].name"/>:
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-xs-12">
+                                <table class="table table-condensed table-statement">
+                                    <thead>
                                     <tr>
                                         <th>Reference number</th>
                                         <th>Date</th>
@@ -50,9 +58,7 @@
                                         <th class="amount">Balance</th>
                                     </tr>
                                 </thead>
-                                <tr t-foreach="Lines[o.id][currency]" t-as="line"
-                                    t-att-class="'statement-blocked' if line['blocked'] else ''">
-
+                                    <tr t-foreach="Lines[o.id][currency]" t-as="line" t-att-class="'statement-blocked' if line['blocked'] else ''">
                                     <td>
                                         <span t-esc="line['move_id']"/>
                                     </td>
@@ -93,7 +99,7 @@
                                               t-options="{'widget': 'monetary', 'display_currency': currency}"/>
                                     </td>
                                 </tr>
-                                <tr>
+                                    <tr>
                                     <td/>
                                     <td>
                                         <span t-esc="Date_end[o.id]"/>
@@ -109,10 +115,18 @@
                                               t-options="{'widget': 'monetary', 'display_currency': currency}"/>
                                     </td>
                                 </tr>
-                            </table>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-xs-12">
                             <p t-if="Show_Buckets">
                                 Aging Report at <span t-esc="Date_end[o.id]"/> in <span t-esc="Currencies[o.id][currency].name"/>:
                             </p>
+                        </div>
+                        </div>
+                        <div class="row mt8">
+                            <div class="col-xs-12">
                             <table class="table table-condensed table-statement" t-if="Show_Buckets">
                                 <thead>
                                     <tr>
@@ -159,17 +173,24 @@
                                     </tr>
                                 </tbody>
                             </table>
-                        </t>
+                        </div>
+                        </div>
                     </t>
-                    <p t-if="not Lines[o.id]">
-                        <strong>The partner doesn't have due entries.</strong>
-                    </p>
-                </div>
-            </div>
-        </t>
-    </template>
+                </t>
+                <t t-else="">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p>
+                                <strong>The partner doesn't have due entries.</strong>
+                            </p>
+                        </div>
+                    </div>
+                </t>
+        </div>
+    </t>
+</template>
 
-    <template id="statement">
+<template id="statement">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
                 <t t-if="not (Filter_non_due_partners and (not Lines[o.id]) and (len(doc_ids) > 1))">
@@ -177,7 +198,7 @@
                 </t>
             </t>
         </t>
-    </template>
+</template>
 
     <report id="action_print_customer_outstanding_statement"
             model="res.partner"

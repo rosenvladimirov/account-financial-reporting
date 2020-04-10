@@ -12,12 +12,19 @@
                 </group>
                 <group name="filters">
                     <group name="date_range">
-                        <field name="date_at"/>
+                        <field name="fy_date_from" invisible="1"/>
+                        <field name="date_at" invisible="1"/>
+                        <field name="date_range_id"/>
+                        <field name="date_from"/>
+                        <field name="date_to"/>
+                        <field name="show_all_ob"/>
+                        <field name="without_vat"/>
                     </group>
                     <group name="other_filters">
                         <field name="target_move" widget="radio"/>
                         <field name="hide_account_at_0"/>
                         <field name="foreign_currency"/>
+                        <field name="show_more"/>
                     </group>
                 </group>
                 <group name="partner_filter" col="1">
@@ -56,20 +63,6 @@
                 view_type="form"
                 view_mode="form"
                 view_id="open_items_wizard"
-                target="new" />
-
-    <!--Add to res.partner action-->
-    <act_window id="act_action_open_items_wizard_partner_relation"
-                name="Open Items Partner"
-                res_model="open.items.report.wizard"
-                src_model="res.partner"
-                view_mode="form"
-                context="{
-                    'default_receivable_accounts_only':1,
-                    'default_payable_accounts_only':1,
-                    }"
-                groups="account.group_account_manager"
-                key2="client_action_multi"
                 target="new" />
 
 </odoo>

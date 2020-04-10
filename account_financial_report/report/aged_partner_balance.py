@@ -185,7 +185,7 @@ class AgedPartnerBalanceReportCompute(models.TransientModel):
     _inherit = 'report_aged_partner_balance'
 
     @api.multi
-    def print_report(self, report_type):
+    def print_report(self, report_type='qweb-pdf', report_sub_type=False):
         self.ensure_one()
         if report_type == 'xlsx':
             report_name = 'a_f_r.report_aged_partner_balance_xlsx'

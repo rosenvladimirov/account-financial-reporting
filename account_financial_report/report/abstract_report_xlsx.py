@@ -350,10 +350,11 @@ class AbstractReportXslx(models.AbstractModel):
         raise NotImplementedError()
 
     def _get_report_complete_name(self, report, prefix):
-        if report.company_id:
-            suffix = ' - %s - %s' % (
-                report.company_id.name, report.company_id.currency_id.name)
-            return prefix + suffix
+        for rep in report:
+            if 'company_id' in rep._fields and rep.company_id:
+                suffix = ' - %s - %s' % (
+                    rep.company_id.name, rep.company_id.currency_id.name)
+                return prefix + suffix
         return prefix
 
     def _get_report_name(self, report):

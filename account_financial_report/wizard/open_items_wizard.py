@@ -6,6 +6,9 @@
 from odoo import models, fields, api
 from odoo.tools.safe_eval import safe_eval
 from odoo.tools import pycompat
+from odoo.tools import DEFAULT_SERVER_DATE_FORMAT
+from odoo.exceptions import ValidationError
+from datetime import datetime, date
 
 
 class OpenItemsReportWizard(models.TransientModel):
@@ -20,6 +23,16 @@ class OpenItemsReportWizard(models.TransientModel):
         required=False,
         string='Company'
     )
+
+    date_range_id = fields.Many2one(
+        comodel_name='date.range',
+        string='Date range'
+    )
+    date_range_name = fields.Char("Date range name")
+    fy_date_from = fields.Date('FY Start Date')
+    date_from = fields.Date('Start Date')
+    date_to = fields.Date('End Date', required=True, default=fields.Date.context_today)
+
     date_at = fields.Date(required=True,
                           default=fields.Date.context_today)
     target_move = fields.Selection([('posted', 'All Posted Entries'),
@@ -44,35 +57,34 @@ class OpenItemsReportWizard(models.TransientModel):
     partner_ids = fields.Many2many(
         comodel_name='res.partner',
         string='Filter partners',
-        default=lambda self: self._default_partners(),
     )
     foreign_currency = fields.Boolean(
         string='Show foreign currency',
         help='Display foreign currency for move lines, unless '
              'account currency is not setup through chart of accounts '
-             'will display initial and final balance in that currency.',
-        default=lambda self: self._default_foreign_currency(),
+             'will display initial and final balance in that currency.'
     )
-
-    def _default_foreign_currency(self):
-        return self.env.user.has_group('base.group_multi_currency')
-
-    def _default_partners(self):
-        context = self.env.context
-
-        if context.get('active_ids') and context.get('active_model') \
-                == 'res.partner':
-            partner_ids = context['active_ids']
-            corp_partners = self.env['res.partner'].browse(partner_ids). \
-                filtered(lambda p: p.parent_id)
-
-            partner_ids = set(partner_ids) - set(corp_partners.ids)
-            partner_ids |= set(corp_partners.mapped('parent_id.id'))
-            return list(partner_ids)
+    show_more = fields.Boolean(
+        string='Show more column',
+        help='Display extra info',
+        default=True,
+    )
+    show_all_ob = fields.Boolean(
+        string='Show all accounts in OB',
+        help='Display all account opened balances',
+        default=True,
+    )
+    without_vat = fields.Boolean(
+        string='Show amount withot VAT',
+        help='Display all amounts in NET sale without VAT',
+    )
 
     @api.onchange('company_id')
     def onchange_company_id(self):
         """Handle company change."""
+        if self.company_id and self.date_range_id.company_id and \
+                self.date_range_id.company_id != self.company_id:
+            self.date_range_id = False
         if self.company_id and self.partner_ids:
             self.partner_ids = self.partner_ids.filtered(
                 lambda p: p.company_id == self.company_id or
@@ -84,18 +96,62 @@ class OpenItemsReportWizard(models.TransientModel):
                 self.account_ids = self.account_ids.filtered(
                     lambda a: a.company_id == self.company_id)
         res = {'domain': {'account_ids': [],
-                          'partner_ids': []}}
+                          'partner_ids': [],
+                          'date_range_id': []}}
         if not self.company_id:
             return res
         else:
             res['domain']['account_ids'] += [
                 ('company_id', '=', self.company_id.id)]
             res['domain']['partner_ids'] += [
-                '&',
                 '|', ('company_id', '=', self.company_id.id),
-                ('company_id', '=', False),
-                ('parent_id', '=', False)]
+                ('company_id', '=', False)]
+            res['domain']['date_range_id'] += [
+                '|', ('company_id', '=', self.company_id.id),
+                ('company_id', '=', False)]
         return res
+
+    @api.onchange('date_to')
+    def onchange_date_to(self):
+        only_fy = self.env['date.range.type'].search([('fiscal_year', '=', True)])
+        if only_fy:
+            fy_date_from = self.env['date.range'].search([('type_id', 'in', only_fy.ids), ('date_start', '>=', self.fy_date_from), ('date_end', '<=', self.date_to)])
+        else:
+            fy_date_from = False
+        if fy_date_from:
+            self.fy_date_from = fy_date_from.date_start
+        elif not fy_date_from and self.date_to:
+            epoch_year = datetime.strptime(self.date_to, DEFAULT_SERVER_DATE_FORMAT).year
+            year_start = date(epoch_year, 1, 1)
+            fy_date_start = year_start.strftime(DEFAULT_SERVER_DATE_FORMAT)
+            self.fy_date_from = fy_date_start
+        self.date_at = self.date_to
+
+    @api.onchange('date_range_id')
+    def onchange_date_range_id(self):
+        """Handle date range change."""
+        self.date_from = self.date_range_id.date_start
+        self.date_to = self.date_range_id.date_end
+        self.date_range_name = self.date_range_id.name
+        self.date_at = self.date_range_id.date_end
+        fy_date_from = self.env['date.range'].search([('date_start', '>=', self.fy_date_from), ('date_end', '<=', self.date_to)])
+        if fy_date_from:
+            self.fy_date_from = fy_date_from.date_start
+        elif not fy_date_from and self.date_to:
+            epoch_year = datetime.strptime(self.date_to, DEFAULT_SERVER_DATE_FORMAT).year
+            year_start = date(epoch_year, 1, 1)
+            fy_date_start = year_start.strftime(DEFAULT_SERVER_DATE_FORMAT)
+            self.fy_date_from = fy_date_start
+
+    @api.multi
+    @api.constrains('company_id', 'date_range_id')
+    def _check_company_id_date_range_id(self):
+        for rec in self.sudo():
+            if rec.company_id and rec.date_range_id.company_id and\
+                    rec.company_id != rec.date_range_id.company_id:
+                raise ValidationError(
+                    _('The Company in the Open Item Wizard and in '
+                      'Date Range must be the same.'))
 
     @api.onchange('receivable_accounts_only', 'payable_accounts_only')
     def onchange_type_accounts_only(self):
@@ -127,6 +183,7 @@ class OpenItemsReportWizard(models.TransientModel):
 
         context1['active_id'] = report.id
         context1['active_ids'] = report.ids
+        context1['show_more'] = self.show_more
         vals['context'] = context1
         return vals
 
@@ -144,12 +201,29 @@ class OpenItemsReportWizard(models.TransientModel):
 
     def _prepare_report_open_items(self):
         self.ensure_one()
+        if self.receivable_accounts_only or self.payable_accounts_only:
+            if self.receivable_accounts_only and self.payable_accounts_only:
+                accounts_only = 'Customers/Suppliers'
+            elif self.receivable_accounts_only:
+                accounts_only = 'Customers'
+            elif self.payable_accounts_only:
+                accounts_only = 'Suppliers'
+        else:
+            accounts_only = 'All'
         return {
             'date_at': self.date_at,
+            'date_range_id': self.date_range_id.id,
+            'date_range_name': self.date_range_name,
+            'fy_date_from': self.fy_date_from,
+            'date_from': self.date_from,
+            'date_to': self.date_to,
             'only_posted_moves': self.target_move == 'posted',
             'hide_account_at_0': self.hide_account_at_0,
+            'show_all_ob': self.show_all_ob,
+            'without_vat': self.without_vat,
             'foreign_currency': self.foreign_currency,
             'company_id': self.company_id.id,
+            'accounts_only': accounts_only,
             'filter_account_ids': [(6, 0, self.account_ids.ids)],
             'filter_partner_ids': [(6, 0, self.partner_ids.ids)],
         }

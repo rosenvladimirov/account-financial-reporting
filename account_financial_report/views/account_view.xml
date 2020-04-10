@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_account_specific_form">
+        <field name="name">account.account.form.inherit</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="model">account.account</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <field name="deprecated" position="after">
+                <field name="centralized"/>
+            </field>
+        </field>
+    </record>
+    <record id="account_tag_view_bg_form" model="ir.ui.view">
+        <field name="name">account.account.tag.bg</field>
+        <field name="model">account.account.tag</field>
+        <field name="inherit_id" ref="account_tag_menu.account_tag_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Reports configuration" name="reports">
+                    <group>
+                        <group string="Taxes" name="config">
+                            <field name="type_taxes" attrs="{'invisible': [('applicability', 'not in', ('taxes', 'info'))]}"/>
+                            <field name="type_info" attrs="{'invisible': [('applicability', 'not in', ('taxes', 'info'))]}"/>
+                        </group>
+                        <group string="Fields">
+                            <field name="pdf_field_net" attrs="{'invisible': [('type_taxes', 'in', ('1')), ('applicability', 'not in', ('taxes', 'info'))]}"/>
+                            <field name="pdf_field_tax" attrs="{'invisible': [('type_taxes', 'in', ('0', '2', '3')), ('applicability', 'not in', ('taxes', 'info'))]}"/>
+                            <field name="csv_field"/>
+                            <field name="xml_tag"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_tax_report_form" model="ir.ui.view">
+        <field name="name">account.tax.report.form</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <field name="analytic" position="after">
+                <field name="tax_type_deal"/>
+                <field name="parent_type_tax_use"/>
+            </field>
+        </field>
+    </record>
+</odoo>

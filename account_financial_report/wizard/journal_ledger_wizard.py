@@ -5,6 +5,9 @@ from odoo import api, fields, models, _
 from odoo.tools.safe_eval import safe_eval
 from odoo.tools import pycompat
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class JournalLedgerReportWizard(models.TransientModel):
     """Journal Ledger report wizard."""
@@ -57,6 +60,8 @@ class JournalLedgerReportWizard(models.TransientModel):
     with_account_name = fields.Boolean(
         default=False,
     )
+    centralize = fields.Boolean(string='Activate centralization',
+                                default=False)
 
     @api.model
     def _get_move_targets(self):
@@ -148,6 +153,7 @@ class JournalLedgerReportWizard(models.TransientModel):
             'journal_ids': [(6, 0, journals.ids)],
             'sort_option': self.sort_option,
             'group_option': self.group_option,
+            'centralize': self.centralize,
             'with_account_name': self.with_account_name,
         }
 

@@ -3,6 +3,9 @@
 
 from odoo import models, fields, api
 
+import logging
+_logger = logging.getLogger(__name__)
+
 DIGITS = (16, 2)
 
 
@@ -53,6 +56,10 @@ class ReportJournalLedger(models.TransientModel):
         comodel_name='report_journal_ledger_move_line',
         inverse_name='report_id',
     )
+    report_c_move_line_ids = fields.One2many(
+        comodel_name='report_journal_ledger_centralization_move_line',
+        inverse_name='report_id',
+    )
     report_journal_ledger_tax_line_ids = fields.One2many(
         comodel_name='report_journal_ledger_journal_tax_line',
         inverse_name='report_id',
@@ -63,6 +70,7 @@ class ReportJournalLedger(models.TransientModel):
     )
     foreign_currency = fields.Boolean()
     with_account_name = fields.Boolean()
+    centralize = fields.Boolean()
 
     @api.model
     def _get_move_targets(self):
@@ -82,6 +90,7 @@ class ReportJournalLedger(models.TransientModel):
         self._inject_journal_values()
         self._inject_move_values()
         self._inject_move_line_values()
+        self._inject_move_line_centralization_values()
         self._inject_journal_tax_values()
         self._update_journal_report_total_values()
 
@@ -348,6 +357,109 @@ class ReportJournalLedger(models.TransientModel):
         self.env.cr.execute(sql, params)
 
     @api.multi
+    def _inject_move_line_centralization_values(self):
+        self.ensure_one()
+        sql = """
+            DELETE
+            FROM report_journal_ledger_centralization_move_line
+            WHERE report_id = %s
+        """
+        params = (
+            self.id,
+        )
+        self.env.cr.execute(sql, params)
+        sql = """
+            INSERT INTO report_journal_ledger_centralization_move_line (
+                create_uid,
+                create_date,
+                report_id,
+                report_journal_ledger_id,
+                report_move_id,
+                move_id,
+                account_id,
+                partner_id,
+                date,
+                entry,
+                label,
+                debit,
+                credit,
+                company_currency_id,
+                amount_currency,
+                currency_id,
+                tax_id,
+                taxes_description,
+                company_id
+            )
+            SELECT
+                %s as create_uid,
+                NOW() as create_date,
+                rjqm.report_id as report_id,
+                rjqm.report_journal_ledger_id as report_journal_ledger_id,
+                rjqm.id as report_move_id,
+                am.id as move_id,
+                aml.account_id as account_id,
+                aml.partner_id as partner_id,
+                aml.date as date,
+                rjqm.name as entry,
+                STRING_AGG(aml.name, ', ') as label,
+                sum(aml.debit) as debit,
+                sum(aml.credit) as credit,
+                aml.company_currency_id as currency_id,
+                sum(aml.amount_currency) as amount_currency,
+                aml.currency_id as currency_id,
+                aml.tax_line_id as tax_id,
+                CASE
+                    WHEN
+                      aml.tax_line_id is not null
+                THEN
+                    COALESCE(at.description, at.name)
+                ELSE
+                    ''
+                END as taxes_description,
+                    aml.company_id as company_id
+                FROM
+                    account_move_line aml
+                INNER JOIN
+                    report_journal_ledger_move rjqm
+                        on (rjqm.move_id = aml.move_id)
+                LEFT JOIN
+                    account_move am
+                        on (am.id = aml.move_id)
+                LEFT JOIN
+                    account_account aa
+                        on (aa.id = aml.account_id)
+                LEFT JOIN
+                    res_partner p
+                        on (p.id = aml.partner_id)
+                LEFT JOIN
+                    account_tax at
+                        on (at.id = aml.tax_line_id)
+                LEFT JOIN
+                    res_currency currency
+                        on (currency.id = aml.currency_id)
+                WHERE
+                    rjqm.report_id = %s
+                GROUP BY aml.company_id, 
+                         rjqm.report_id, 
+                         rjqm.id, 
+                         rjqm.report_journal_ledger_id,
+                         am.id,
+                         aml.account_id, 
+                         aml.partner_id, 
+                         aml.date, 
+                         aml.company_currency_id, 
+                         aml.currency_id, 
+                         aml.tax_line_id, 
+                         at.description, 
+                         at.name;
+        """
+        params = (
+            self.env.uid,
+            self.id,
+        )
+        self.env.cr.execute(sql, params)
+
+    @api.multi
     def _inject_report_tax_values(self):
         self.ensure_one()
         sql_distinct_tax_id = """
@@ -585,13 +697,14 @@ class ReportJournalLedger(models.TransientModel):
         self.env.cr.execute(sql, (self.id,))
 
     @api.multi
-    def print_report(self, report_type):
+    def print_report(self, report_type='qweb-pdf', report_sub_type=False):
         self.ensure_one()
         if report_type == 'xlsx':
             report_name = 'a_f_r.report_journal_ledger_xlsx'
         else:
             report_name = 'account_financial_report.' \
                           'report_journal_ledger_qweb'
+        _logger.info("PRINT DATA %s:%s" % (report_type, report_name))
         return self.env['ir.actions.report'].search(
             [('report_name', '=', report_name),
              ('report_type', '=', report_type)], limit=1).report_action(self)
@@ -611,19 +724,6 @@ class ReportJournalLedger(models.TransientModel):
     @api.model
     def get_html(self, given_context=None):
         return self._get_html()
-
-    @api.model
-    def _transient_vacuum(self, force=False):
-        """Remove journal ledger subtables first for avoiding a costly
-        ondelete operation.
-        """
-        # Next 3 lines adapted from super method for mimicking behavior
-        cls = type(self)
-        if not force and (cls._transient_check_count < 21):
-            return True  # no vacuum cleaning this time
-        self.env.cr.execute("DELETE FROM report_journal_ledger_move_line")
-        self.env.cr.execute("DELETE FROM report_journal_ledger_move")
-        return super(ReportJournalLedger, self)._transient_vacuum(force=force)
 
 
 class ReportJournalLedgerJournal(models.TransientModel):
@@ -693,6 +793,10 @@ class ReportJournalLedgerMove(models.TransientModel):
         comodel_name='report_journal_ledger_move_line',
         inverse_name='report_move_id',
     )
+    report_c_move_line_ids = fields.One2many(
+        comodel_name='report_journal_ledger_centralization_move_line',
+        inverse_name='report_move_id',
+    )
     name = fields.Char()
     company_id = fields.Many2one(
         comodel_name='res.company',
@@ -724,6 +828,72 @@ class ReportJournalLedgerMoveLine(models.TransientModel):
     )
     move_line_id = fields.Many2one(
         comodel_name='account.move.line',
+        required=True,
+        ondelete='cascade',
+    )
+    account_id = fields.Many2one(
+        comodel_name='account.account'
+    )
+    account = fields.Char()
+    account_code = fields.Char()
+    account_type = fields.Char()
+    partner = fields.Char()
+    partner_id = fields.Many2one(
+        comodel_name='res.partner',
+    )
+    date = fields.Date()
+    entry = fields.Char()
+    label = fields.Char()
+    debit = fields.Float(
+        digits=DIGITS,
+    )
+    credit = fields.Float(
+        digits=DIGITS,
+    )
+    company_currency_id = fields.Many2one(
+        comodel_name='res.currency',
+    )
+    amount_currency = fields.Monetary(
+        currency_field='currency_id',
+    )
+    currency_id = fields.Many2one(
+        comodel_name='res.currency',
+    )
+    currency_name = fields.Char()
+    taxes_description = fields.Char()
+    tax_id = fields.Many2one(
+        comodel_name='account.tax'
+    )
+    company_id = fields.Many2one(
+        comodel_name='res.company',
+        required=True,
+        ondelete='cascade'
+    )
+
+
+class ReportJournalLedgerCentralizationMoveLine(models.TransientModel):
+
+    _name = 'report_journal_ledger_centralization_move_line'
+    _inherit = 'account_financial_report_abstract'
+    _order = 'partner_id desc, account_id desc'
+
+    report_id = fields.Many2one(
+        comodel_name='report_journal_ledger',
+        required=True,
+        ondelete='cascade'
+    )
+    report_journal_ledger_id = fields.Many2one(
+        comodel_name='report_journal_ledger_journal',
+        required=True,
+        ondelete='cascade',
+    )
+    report_move_id = fields.Many2one(
+        comodel_name='report_journal_ledger_move',
+        required=True,
+        ondelete='cascade',
+    )
+    move_id = fields.Many2one(
+        comodel_name='account.move',
         required=True,
         ondelete='cascade',
     )

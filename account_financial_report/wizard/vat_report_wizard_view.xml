@@ -14,10 +14,15 @@
                     <field name="date_range_id"/>
                     <field name="date_from"/>
                     <field name="date_to"/>
+                    <field name="group_by_period"/>
+                    <field name="receivable_vat_only"/>
+                    <field name="payable_vat_only"/>
                 </group>
                 <group name="other_filters">
                     <field name="based_on" widget="radio"/>
-                    <field name="tax_detail"/>
+                    <field name="parent_id"/>
+                    <field name="tax_detail" attrs="{'invisible':[('based_on', '=', 'vattaxtags')]}"/>
+                    <field name="pdf_detail"/>
                 </group>
             </group>
             <footer>
@@ -25,6 +30,8 @@
                             type="object" default_focus="1" class="oe_highlight"/>
                     or
                     <button name="button_export_pdf" string="Export PDF" type="object"/>
+                    or
+                    <button name="button_export_fillpdf" string="Export FillPDF" type="object"/>
                     or
                     <button name="button_export_xlsx" string="Export XLSX" type="object"/>
                     or

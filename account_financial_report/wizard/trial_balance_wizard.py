@@ -138,10 +138,8 @@ class TrialBalanceReportWizard(models.TransientModel):
             res['domain']['account_ids'] += [
                 ('company_id', '=', self.company_id.id)]
             res['domain']['partner_ids'] += [
-                '&',
                 '|', ('company_id', '=', self.company_id.id),
-                ('company_id', '=', False),
-                ('parent_id', '=', False)]
+                ('company_id', '=', False)]
             res['domain']['date_range_id'] += [
                 '|', ('company_id', '=', self.company_id.id),
                 ('company_id', '=', False)]
@@ -234,7 +232,6 @@ class TrialBalanceReportWizard(models.TransientModel):
             'hierarchy_on': self.hierarchy_on,
             'limit_hierarchy_level': self.limit_hierarchy_level,
             'show_hierarchy_level': self.show_hierarchy_level,
-            'hide_parent_hierarchy_level': self.hide_parent_hierarchy_level,
             'show_partner_details': self.show_partner_details,
         }
 

@@ -116,48 +116,59 @@ class GeneralLedgerXslx(models.AbstractModel):
 
     def _generate_report_content(self, workbook, report):
         # For each account
+        self.write_array_header()
         for account in report.account_ids:
-            # Write account title
-            self.write_array_title(account.code + ' - ' + account.name)
+            if not (report.hide_account_on_0 and account.move_balance == 0):
 
-            if not account.partner_ids:
-                # Display array header for move lines
-                self.write_array_header()
+                # Write account title
+                self.write_array_title(account.account_id.code + ' - ' + account.account_id.name)
 
-                # Display initial balance line for account
-                self.write_initial_balance(account)
-
-                # Display account move lines
-                for line in account.move_line_ids:
-                    self.write_line(line)
-
-            else:
-                # For each partner
-                for partner in account.partner_ids:
-                    # Write partner title
-                    self.write_array_title(partner.name)
-
+                if not account.partner_ids:
                     # Display array header for move lines
-                    self.write_array_header()
 
-                    # Display initial balance line for partner
-                    self.write_initial_balance(partner)
+                    # Display initial balance line for account
+                    self.write_initial_balance(account)
 
                     # Display account move lines
-                    for line in partner.move_line_ids:
-                        self.write_line(line)
+                    for line in account.move_line_ids:
+                        res_id = line.move_line_id.partner_id and line.move_line_id.partner_id.id or False
+                        self.write_line(line, res_id=res_id)
 
-                    # Display ending balance line for partner
-                    self.write_ending_balance(partner)
+                else:
+                    # For each partner
+                    for partner in account.partner_ids:
+                        # Write partner title
+                        res_id = partner.partner_id and partner.partner_id.id or False
+                        name = False
+                        if res_id:
+                            name = self.env['ir.translation']._get_ids("%s,%s" % ('res.partner', 'name'), 'model',
+                                                        self.env.user.lang, [res_id])[res_id]
+                        if not name:
+                            name = partner.partner_id.name
+                        self.write_array_title(name)
 
-                    # Line break
-                    self.row_pos += 1
+                        # Display array header for move lines
+                        # self.write_array_header()
 
-            # Display ending balance line for account
-            self.write_ending_balance(account)
+                        # Display initial balance line for partner
+                        self.write_initial_balance(partner)
 
-            # 2 lines break
-            self.row_pos += 2
+                        # Display account move lines
+                        for line in partner.move_line_ids:
+                            res_id = line.move_line_id.partner_id and line.move_line_id.partner_id.id or False
+                            self.write_line(line, res_id=res_id)
+
+                        # Display ending balance line for partner
+                        self.write_ending_balance(partner)
+
+                        # Line break
+                        self.row_pos += 1
+
+                # Display ending balance line for account
+                self.write_ending_balance(account)
+
+                # 2 lines break
+                self.row_pos += 2
 
     def write_initial_balance(self, my_object):
         """Specific function to write initial balance for General Ledger"""

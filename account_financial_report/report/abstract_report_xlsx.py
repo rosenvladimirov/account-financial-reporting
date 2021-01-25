@@ -4,6 +4,9 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from odoo import models
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class AbstractReportXslx(models.AbstractModel):
     _name = 'report.account_financial_report.abstract_report_xlsx'
@@ -182,17 +185,36 @@ class AbstractReportXslx(models.AbstractModel):
                              self.format_header_center)
         self.row_pos += 1
 
-    def write_line(self, line_object):
+    def write_line(self, line_object, res_id=False):
         """Write a line on current line using all defined columns field name.
         Columns are defined with `_get_report_columns` method.
         """
         for col_pos, column in self.columns.items():
             value = getattr(line_object, column['field'])
             cell_type = column.get('type', 'string')
+            lang_line_object = False
+            if column['field'] == 'partner':
+                lang_line_object = 'res.partner'
+
             if cell_type == 'many2one':
+                res_id = value.id
+                if res_id and lang_line_object:
+                    value_name = \
+                        self.env['ir.translation']._get_ids("%s,%s" % (lang_line_object, 'name'), 'model',
+                                                            self.env.user.lang, [res_id])[res_id]
+                    #_logger.info("VALUE_NAME many2one %s:%s:%s" % (value_name, lang_line_object, res_id))
+                    if value_name:
+                        value = value_name
                 self.sheet.write_string(
-                    self.row_pos, col_pos, value.name or '', self.format_right)
+                    self.row_pos, col_pos, value or '', self.format_right)
             elif cell_type == 'string':
+                if res_id and lang_line_object:
+                    value_name = \
+                        self.env['ir.translation']._get_ids("%s,%s" % (lang_line_object, 'name'), 'model',
+                                                            self.env.user.lang, [res_id])[res_id]
+                    if value_name:
+                        value = value_name
+                #_logger.info("VALUE_NAME string %s:%s:%s" % (value, lang_line_object, res_id))
                 if hasattr(line_object, 'account_group_id') and \
                         line_object.account_group_id:
                     self.sheet.write_string(self.row_pos, col_pos, value or '',
@@ -274,6 +296,9 @@ class AbstractReportXslx(models.AbstractModel):
             if column.get('field_final_balance'):
                 value = getattr(my_object, column['field_final_balance'])
                 cell_type = column.get('type', 'string')
+                if column['field_final_balance'] == 'partner':
+                    lang_line_object = 'res.partner'
+
                 if cell_type == 'string':
                     self.sheet.write_string(self.row_pos, col_pos, value or '',
                                             self.format_header_right)

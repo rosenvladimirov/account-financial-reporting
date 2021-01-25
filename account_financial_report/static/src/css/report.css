@@ -68,6 +68,9 @@ page[size="A4_landscape"] {
 .act_as_tbody {
     display: table-row-group !important;
 }
+.act_as_tfoot {
+    display: table-footer-group !important;
+}
 .list_table, .data_table, .totals_table{
     width: 100% !important;
 }
@@ -81,15 +84,15 @@ page[size="A4_landscape"] {
     cursor: pointer;
 }
 .list_table, .data_table, .totals_table, .list_table .act_as_row {
-    border-left:0px;
-    border-right:0px;
-    text-align:center;
-    font-size:10px;
-    padding-right:3px;
-    padding-left:3px;
-    padding-top:2px;
-    padding-bottom:2px;
-    border-collapse:collapse;
+    border-left: 1px solid lightgray;
+    border-right: 1px solid lightgray;
+    text-align: left;
+    font-size: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-collapse: collapse;
 }
 .totals_table {
     font-weight: bold;
@@ -98,10 +101,14 @@ page[size="A4_landscape"] {
 .list_table .act_as_row.labels, .list_table .act_as_row.initial_balance, .list_table .act_as_row.lines {
     border-color:grey !important;
     border-bottom:1px solid lightGrey !important;
+    padding-right: 5px;
+    padding-left: 5px;
 }
 .data_table .act_as_cell{
     border: 1px solid lightGrey;
     text-align: center;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .data_table .act_as_cell, .list_table .act_as_cell, .totals_table .act_as_cell {
     word-wrap: break-word;
@@ -163,7 +170,7 @@ page[size="A4_landscape"] {
     width: 90%;
     margin-right: auto;
     margin-left: auto;
-    font-family: Helvetica, Arial;
+    // font-family: Helvetica, Arial;
 }
 /**
  * Checkboxes

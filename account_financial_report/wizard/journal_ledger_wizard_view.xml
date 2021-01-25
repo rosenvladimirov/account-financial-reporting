@@ -17,7 +17,7 @@
                 <separator string="Periods"/>
                 <group>
                     <group>
-                        <field name="date_range_id"/>
+                        <field name="date_range_id" domain="[('company_id', '=', company_id)]"/>
                         <field name="date_from"/>
                         <field name="date_to"/>
                     </group>
@@ -36,10 +36,13 @@
                     </group>
                     <group/>
                 </group>
-
+                <separator string="Journal types"/>
+                <group col="4">
+                    <field name="type_ids" widget="many2many_tags" nolabel="1" options="{'no_create': True}"/>
+                </group>
                 <separator string="Journals"/>
-                <group>
-                    <field name="journal_ids" widget="many2many_tags"/>
+                <group col="4">
+                    <field name="journal_ids" widget="many2many_tags" nolabel="1"/>
                 </group>
 
                 <footer>

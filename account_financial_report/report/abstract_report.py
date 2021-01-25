@@ -1,7 +1,10 @@
 # Copyright 2018 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import models, fields
+from odoo import models, tools, fields, api, _
+
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class AbstractReport(models.AbstractModel):
@@ -61,3 +64,10 @@ WHERE COALESCE(
     < ((now() at time zone 'UTC') - interval %s)
 """
         self.env.cr.execute(query, ("%s seconds" % seconds,))
+
+    def get_buttons(self, given_context=None):
+        _logger.info("GET BUTTONS %s-%s" % (self, given_context))
+        retr = []
+        retr.append({'name': _('Print'), 'action': 'print_report', 'data_id': False, 'ttype': 'qweb-pdf'})
+        retr.append({'name': _('Export'), 'action': 'print_report', 'data_id': False, 'ttype': 'xlsx'})
+        return retr

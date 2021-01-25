@@ -14,7 +14,7 @@
                     <group name="date_range">
                         <field name="fy_date_from" invisible="1"/>
                         <field name="date_at" invisible="1"/>
-                        <field name="date_range_id"/>
+                        <field name="date_range_id" domain="[('company_id', '=', company_id)]"/>
                         <field name="date_from"/>
                         <field name="date_to"/>
                         <field name="show_all_ob"/>

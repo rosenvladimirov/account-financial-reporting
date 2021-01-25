@@ -125,6 +125,11 @@
                      style="width: 8.65%;">
                     Credit
                 </div>
+                <div class="act_as_cell"
+                     name="balance"
+                     style="width: 8.65%;">
+                    Balance
+                </div>
                 <t t-if="display_currency">
                     <div class="act_as_cell"
                          name="currency_name"
@@ -163,6 +168,10 @@
                  name="credit">
                 <b><span t-field="journal.credit"/></b>
             </div>
+            <div class="act_as_cell amount"
+                 name="balance">
+                <b><span t-field="journal.balance"/></b>
+            </div>
             <t t-if="display_currency">
                 <div class="act_as_cell"
                      name="currency_name">
@@ -180,7 +189,7 @@
         <t t-set="last_partner" t-eval="None"/>
         <t t-set="display_partner" t-eval="True"/>
         <t t-if="account_move_centralize">
-            <t t-foreach="move.report_move_line_ids" t-as="move_line">
+            <t t-foreach="move.report_c_move_line_ids" t-as="move_line">
                 <div class="act_as_row lines">
                     <t t-set="current_partner" t-value="move_line.partner_id"/>
                     <t t-set="display_partner" t-value="current_partner != last_partner"/>
@@ -206,7 +215,16 @@
 
     <template id="account_financial_report.report_journal_move_line">
         <t t-set="res_model" t-value="'account.move'"/>
-        <t t-set="res_id" t-value="move_line.move_line_id.move_id.id"/>
+        <t t-if="account_move_centralize">
+            <t t-set="res_id" t-value="move_line.move_id.id"/>
+            <t t-set="account_code" t-value="move_line.account_id.code"/>
+            <t t-set="account_name" t-value="move_line.account_id.name"/>
+        </t>
+        <t t-else="">
+            <t t-set="res_id" t-value="move_line.move_line_id.move_id.id"/>
+            <t t-set="account_code" t-value="move_line.account_code"/>
+            <t t-set="account_name" t-value="move_line.account"/>
+        </t>
         <div class="act_as_cell left" name="entry">
             <span t-if="display_move_info">
                 <a t-att-data-active-id="res_id"
@@ -219,9 +237,9 @@
             <span t-if="display_move_info" t-field="move_line.date"/>
         </div>
         <div class="act_as_cell left" name="account">
-            <span t-field="move_line.account_code"/>
+            <span t-esc="account_code"/>
             <span t-if="display_account_name">
-                - <span t-field="move_line.account"/>
+                - <span t-esc="account_name"/>
             </span>
         </div>
         <div class="act_as_cell left" name="partner">
@@ -248,6 +266,11 @@
         <div class="act_as_cell amount" name="credit">
             <t t-if="move_line.credit">
                 <span t-field="move_line.credit"/>
+            </t>
+        </div>
+        <div class="act_as_cell amount" name="balance">
+            <t t-if="move_line.balance">
+                <span t-field="move_line.balance"/>
             </t>
         </div>
         <t t-if="display_currency">
@@ -476,6 +499,7 @@
     <template id="report_journal_ledger_base_qweb">
         <t t-set="display_currency" t-value="o.foreign_currency"/>
         <t t-set="display_account_name" t-value="o.with_account_name"/>
+        <t t-set="account_move_centralize" t-value="o.centralize"/>
         <t t-set="title">Journal Ledger - <t t-raw="o.company_id.name"/> - <t t-raw="o.company_id.currency_id.name"/></t>
         <t t-set="company_name" t-value="o.company_id.name"/>
         <t t-set="res_company" t-value="o.company_id"/>
@@ -547,6 +571,9 @@
                                             <th name="debit" style="width: 8.65%;">
                                                 Credit
                                             </th>
+                                            <th name="debit" style="width: 8.65%;">
+                                                Balance
+                                            </th>
                                             <t t-if="display_currency">
                                                 <th name="currency_name" style="width: 2.16%;">
                                                     Cur.
@@ -561,10 +588,25 @@
                                         <t t-set="display_move_info" t-value="True"/>
                                         <t t-set="last_partner" t-eval="None"/>
                                         <t t-set="display_partner" t-eval="True"/>
-                                        <tr t-foreach="move.report_move_line_ids" t-as="move_line">
+                                        <t t-if="account_move_centralize">
+                                            <t t-set="report_move_line" t-value="move.report_c_move_line_ids"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-set="report_move_line" t-value="move.report_move_line_ids"/>
+                                        </t>
+                                        <tr t-foreach="report_move_line" t-as="move_line">
                                             <t t-set="current_partner" t-value="move_line.partner_id"/>
                                             <t t-set="display_partner" t-value="current_partner != last_partner"/>
-                                            <t t-set="line_move" t-value="move_line.move_line_id"/>
+                                            <t t-if="account_move_centralize">
+                                                <t t-set="line_move" t-value="move_line.move_id.line_ids[0]"/>
+                                                <t t-set="account_code" t-value="move_line.account_id.code"/>
+                                                <t t-set="account_name" t-value="move_line.account_id.name"/>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-set="line_move" t-value="move_line.move_line_id"/>
+                                                <t t-set="account_code" t-value="move_line.account_code"/>
+                                                <t t-set="account_name" t-value="move_line.account"/>
+                                            </t>
                                             <td class="text-left" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="entry">
                                                 <strong t-if="display_move_info" t-field="move_line.entry"/>
                                                 <t t-if="line_move.invoice_id and display_move_info">
@@ -585,9 +627,9 @@
                                                 <span t-field="move_line.taxes_description"/>
                                             </td>
                                             <td class="text-left" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="account">
-                                                <strong t-field="move_line.account_code"/>
+                                                <strong t-esc="account_code"/>
                                                 <span t-if="display_account_name">
-                                                    - <span t-field="move_line.account"/>
+                                                    - <span t-esc="account_name"/>
                                                 </span>
                                             </td>
                                             <td class="text-right" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="debit">
@@ -598,6 +640,11 @@
                                             <td class="text-right" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="credit">
                                                 <t t-if="move_line.credit">
                                                     <span t-field="move_line.credit"/>
+                                                </t>
+                                            </td>
+                                            <td class="text-right" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="balance">
+                                                <t t-if="move_line.balance">
+                                                    <span t-field="move_line.balance"/>
                                                 </t>
                                             </td>
                                             <t t-if="display_currency">
@@ -731,6 +778,9 @@
                                             <th name="debit" style="width: 8.65%;">
                                                 Credit
                                             </th>
+                                            <th name="debit" style="width: 8.65%;">
+                                                Balance
+                                            </th>
                                             <t t-if="display_currency">
                                                 <th name="currency_name" style="width: 2.16%;">
                                                     Cur.
@@ -755,6 +805,9 @@
                                             <td class="text-right" name="credit">
                                                 <b><span t-field="journal.credit"/></b>
                                             </td>
+                                            <td class="text-right" name="balance">
+                                                <b><span t-field="journal.balance"/></b>
+                                            </td>
                                             <t t-if="display_currency">
                                                 <td class="text-center" name="currency_name" style="width: 2.16%;">
                                                 </td>
@@ -766,10 +819,25 @@
                                             <t t-set="display_move_info" t-value="True"/>
                                             <t t-set="last_partner" t-eval="None"/>
                                             <t t-set="display_partner" t-eval="True"/>
-                                            <tr t-foreach="move.report_move_line_ids" t-as="move_line">
+                                            <t t-if="account_move_centralize">
+                                                <t t-set="report_move_line" t-value="move.report_c_move_line_ids"/>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-set="report_move_line" t-value="move.report_move_line_ids"/>
+                                            </t>
+                                            <tr t-foreach="report_move_line" t-as="move_line">
                                                 <t t-set="current_partner" t-value="move_line.partner_id"/>
                                                 <t t-set="display_partner" t-value="current_partner != last_partner"/>
-                                                <t t-set="line_move" t-value="move_line.move_line_id"/>
+                                                <t t-if="account_move_centralize">
+                                                    <t t-set="line_move" t-value="move_line.move_id.line_ids[0]"/>
+                                                    <t t-set="account_code" t-value="move_line.account_id.code"/>
+                                                    <t t-set="account_name" t-value="move_line.account_id.name"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <t t-set="line_move" t-value="move_line.move_line_id"/>
+                                                    <t t-set="account_code" t-value="move_line.account_code"/>
+                                                    <t t-set="account_name" t-value="move_line.account"/>
+                                                </t>
                                                 <td class="text-left" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="entry">
                                                     <strong t-if="display_move_info" t-field="move_line.entry"/>
                                                     <t t-if="line_move.invoice_id and display_move_info">
@@ -790,9 +858,9 @@
                                                     <span t-field="move_line.taxes_description"/>
                                                 </td>
                                                 <td class="text-left" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="account">
-                                                    <strong t-field="move_line.account_code"/>
+                                                    <strong t-esc="account_code"/>
                                                     <span t-if="display_account_name">
-                                                        - <span t-field="move_line.account"/>
+                                                        - <span t-esc="account_name"/>
                                                     </span>
                                                 </td>
                                                 <td class="text-right" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="debit">
@@ -803,6 +871,11 @@
                                                 <td class="text-right" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="credit">
                                                     <t t-if="move_line.credit">
                                                         <span t-field="move_line.credit"/>
+                                                    </t>
+                                                </td>
+                                                <td class="text-right" t-att-style="display_move_info or 'border-bottom: 0; border-top: 0;'" name="balance">
+                                                    <t t-if="move_line.balance">
+                                                        <span t-field="move_line.balance"/>
                                                     </t>
                                                 </td>
                                                 <t t-if="display_currency">

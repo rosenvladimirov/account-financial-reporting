@@ -12,6 +12,9 @@ from odoo.tools.safe_eval import safe_eval
 from odoo.tools import pycompat
 from odoo.exceptions import ValidationError
 
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class GeneralLedgerReportWizard(models.TransientModel):
     """General ledger report wizard."""
@@ -50,11 +53,24 @@ class GeneralLedgerReportWizard(models.TransientModel):
              'If partners are filtered, '
              'debits and credits totals will not match the trial balance.'
     )
+    hide_detail = fields.Boolean(string='Hide detailed lines',
+                                 default=True)
+    hide_account_on_0 = fields.Boolean(
+        string='Hide account without movement',
+        help='Use this filter to hide an account or a partner '
+             'without movement. '
+             'If partners are filtered, '
+             'debits and credits totals will not match the trial balance.'
+    )
     show_analytic_tags = fields.Boolean(
         string='Show analytic tags',
     )
     receivable_accounts_only = fields.Boolean()
     payable_accounts_only = fields.Boolean()
+    type_ids = fields.Many2many(
+        comodel_name='general.ledger.t.r.wizard',
+        string='Choice journal type',
+    )
     partner_ids = fields.Many2many(
         comodel_name='res.partner',
         string='Filter partners',
@@ -183,6 +199,17 @@ class GeneralLedgerReportWizard(models.TransientModel):
         else:
             self.receivable_accounts_only = self.payable_accounts_only = False
 
+    @api.onchange('type_ids')
+    def onchange_type_ids(self):
+        type_ids = set([])
+        for type_id in self.type_ids:
+            type_ids.update([type_id.code])
+            #_logger.info("TYPE %s" % type_id)
+        #_logger.info("TYPES %s:%s" % (type_ids, self.type_ids))
+        if len(type_ids) > 0:
+            account_journal_ids = self.env['account.journal'].search([('type', 'in', list(type_ids))])
+            self.account_journal_ids = account_journal_ids
+
     @api.multi
     def button_export_html(self):
         self.ensure_one()
@@ -214,6 +241,7 @@ class GeneralLedgerReportWizard(models.TransientModel):
 
     def _prepare_report_general_ledger(self):
         self.ensure_one()
+        #_logger.info("JOURNAL %s" % self.account_journal_ids)
         return {
             'date_from': self.date_from,
             'date_to': self.date_to,
@@ -228,6 +256,8 @@ class GeneralLedgerReportWizard(models.TransientModel):
             'filter_analytic_tag_ids': [(6, 0, self.analytic_tag_ids.ids)],
             'filter_journal_ids': [(6, 0, self.account_journal_ids.ids)],
             'centralize': self.centralize,
+            'hide_detail': self.hide_detail,
+            'hide_account_on_0': self.hide_account_on_0,
             'fy_start_date': self.fy_start_date,
         }
 
@@ -237,3 +267,36 @@ class GeneralLedgerReportWizard(models.TransientModel):
         report = model.create(self._prepare_report_general_ledger())
         report.compute_data_for_report()
         return report.print_report(report_type)
+
+    @api.model
+    def default_get(self, fields):
+        res = super(GeneralLedgerReportWizard, self).default_get(fields)
+        res.update({
+                'centralize': True,
+                'target_move': 'all',
+                'company_id': self.env.user.company_id.id,
+                'hide_detail': True,
+            })
+        type = [
+            ('sale', _('Sale')),
+            ('purchase', _('Purchase')),
+            ('cash', _('Cash')),
+            ('bank', _('Bank')),
+            ('general', _('Miscellaneous')),
+            ]
+        type_ids = self.env['general.ledger.t.r.wizard']
+        for line in type:
+            if not type_ids.search([('code', '=', line[0])]):
+                type_ids.create({
+                    'code': line[0],
+                    'name': line[1],
+                })
+        return res
+
+
+class GeneralLedgerTypeReportWizard(models.TransientModel):
+    _name = "general.ledger.t.r.wizard"
+    _description = "General Ledger Report Wizard Journal types"
+
+    code = fields.Char('key')
+    name = fields.Char('Name')

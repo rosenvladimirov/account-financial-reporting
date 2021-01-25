@@ -409,7 +409,7 @@ WITH
         (SELECT coalesce(regexp_replace(tag.code, '[^0-9\\.]+', '', 'g'), ' ') AS code, tag.name,
                 tag.pdf_field_net, tag.pdf_field_tax, tag.csv_field, tag.xml_tag, tag.type_taxes,
                 tag.id,
-""" + periods_include + """ 
+""" + periods_include + """
                 coalesce(sum(movetax.tax_base_amount*movetax.tax_sign), 0.00) AS net,
                 coalesce(sum(movetax.balance), 0.00) AS tax,
                 coalesce(sum(movetax.debit), 0.00) AS debit,
@@ -541,7 +541,7 @@ SELECT
     groups.id,
     groups.code,
     groups.name,
-""" + include + """ 
+""" + include + """
     abs(groups.net),
     abs(groups.tax),
     abs(groups.base)
@@ -965,7 +965,7 @@ FROM
         query_inject_taxtags_vat = """
 WITH
     taxtags AS
-        (SELECT movetax.account_id, 
+        (SELECT movetax.account_id,
 """ + periods_include + """
                 coalesce(sum(movetax.tax_base_amount*movetax.tax_sign), 0.00) AS net,
                 coalesce(sum(movetax.balance), 0.00) AS tax,

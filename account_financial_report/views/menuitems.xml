@@ -42,12 +42,19 @@
         id="menu_aged_partner_balance_wizard"
         sequence="40"
         />
-    
+
     <menuitem
         parent="menu_oca_reports"
         action="action_vat_report_wizard"
         id="menu_vat_report_wizard"
         sequence="50"
+        />
+
+    <menuitem
+        parent="menu_oca_reports"
+        action="action_account_tag_report_wizard"
+        id="menu_account_tag_report_wizard"
+        sequence="60"
         />
 
     <!-- Hide odoo PDF reports menu -->

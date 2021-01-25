@@ -48,6 +48,8 @@ class GeneralLedgerReport(models.TransientModel):
         comodel_name='account.journal',
     )
     centralize = fields.Boolean()
+    hide_detail = fields.Boolean()
+    hide_account_on_0 = fields.Boolean()
 
     # Flag fields, used for report display
     show_cost_center = fields.Boolean(
@@ -107,6 +109,10 @@ class GeneralLedgerReportAccount(models.TransientModel):
     initial_balance = fields.Float(digits=(16, 2))
     currency_id = fields.Many2one('res.currency')
     initial_balance_foreign_currency = fields.Float(digits=(16, 2))
+    move_debit = fields.Float(digits=(16, 2))
+    move_credit = fields.Float(digits=(16, 2))
+    move_balance = fields.Float(digits=(16, 2))
+    move_balance_foreign_currency = fields.Float(digits=(16, 2))
     final_debit = fields.Float(digits=(16, 2))
     final_credit = fields.Float(digits=(16, 2))
     final_balance = fields.Float(digits=(16, 2))
@@ -193,6 +199,8 @@ class GeneralLedgerReportMoveLine(models.TransientModel):
 
     # Data fields, used to keep link with real object
     move_line_id = fields.Many2one('account.move.line')
+    move_id = fields.Many2one('account.move')
+    partner_id = fields.Many2one('res.partner')
 
     # Data fields, used for report display
     date = fields.Date()
@@ -295,7 +303,7 @@ class GeneralLedgerReportCompute(models.TransientModel):
         self.invalidate_cache()
 
     def _get_account_sub_subquery_sum_amounts(
-            self, include_initial_balance, date_included):
+            self, include_initial_balance, date_included, move_only=False):
         """ Return subquery used to compute sum amounts on accounts """
         sub_subquery_sum_amounts = """
             SELECT
@@ -327,9 +335,17 @@ class GeneralLedgerReportCompute(models.TransientModel):
                 AND ml.date < %s
             """
 
-        if not include_initial_balance:
+        if not include_initial_balance and not move_only:
             sub_subquery_sum_amounts += """
                 AND at.include_initial_balance != TRUE AND ml.date >= %s
+            """
+        elif not move_only:
+            sub_subquery_sum_amounts += """
+                AND at.include_initial_balance = TRUE
+            """
+        elif move_only:
+            sub_subquery_sum_amounts += """
+                AND ml.date >= %s
             """
         else:
             sub_subquery_sum_amounts += """
@@ -391,6 +407,31 @@ class GeneralLedgerReportCompute(models.TransientModel):
             GROUP BY
                 sub.account_id
         """
+        return subquery_sum_amounts
+
+    def _get_final_account_sub_subquery_sum_move_amounts(self, date_included):
+        """ Return final subquery used to compute sum only period movement amounts on accounts """
+
+        subquery_sum_amounts = """
+                    SELECT
+                        sub.account_id AS account_id,
+                        SUM(COALESCE(sub.debit, 0.0)) AS debit,
+                        SUM(COALESCE(sub.credit, 0.0)) AS credit,
+                        SUM(COALESCE(sub.balance, 0.0)) AS balance,
+                        MAX(sub.currency_id) AS currency_id,
+                        SUM(COALESCE(sub.balance_currency, 0.0)) AS balance_currency
+                    FROM
+                    (
+                """
+        subquery_sum_amounts += self._get_account_sub_subquery_sum_amounts(
+            include_initial_balance=False, date_included=date_included, move_only=True
+        )
+
+        subquery_sum_amounts += """
+                    ) sub
+                    GROUP BY
+                        sub.account_id
+                """
         return subquery_sum_amounts
 
     def _inject_account_values(self):
@@ -496,12 +537,16 @@ WITH
         init_subquery = self._get_final_account_sub_subquery_sum_amounts(
             date_included=False
         )
+        move_subquery = self._get_final_account_sub_subquery_sum_move_amounts(
+            date_included=True
+        )
         final_subquery = self._get_final_account_sub_subquery_sum_amounts(
             date_included=True
         )
 
         query_inject_account += """
     initial_sum_amounts AS ( """ + init_subquery + """ ),
+    move_sum_amounts AS ( """ + move_subquery + """ ),
     final_sum_amounts AS ( """ + final_subquery + """ )
 INSERT INTO
     report_general_ledger_account
@@ -517,6 +562,10 @@ INSERT INTO
     initial_balance,
     currency_id,
     initial_balance_foreign_currency,
+    move_debit,
+    move_credit,
+    move_balance,
+    move_balance_foreign_currency,
     final_debit,
     final_credit,
     final_balance,
@@ -535,6 +584,10 @@ SELECT
     COALESCE(i.balance, 0.0) AS initial_balance,
     c.id AS currency_id,
     COALESCE(i.balance_currency, 0.0) AS initial_balance_foreign_currency,
+    COALESCE(fm.debit, 0.0) AS move_debit,
+    COALESCE(fm.credit, 0.0) AS move_credit,
+    COALESCE(fm.balance, 0.0) AS move_balance,
+    COALESCE(fm.balance_currency, 0.0) AS move_balance_foreign_currency,
     COALESCE(f.debit, 0.0) AS final_debit,
     COALESCE(f.credit, 0.0) AS final_credit,
     COALESCE(f.balance, 0.0) AS final_balance,
@@ -545,6 +598,8 @@ FROM
 LEFT JOIN
     initial_sum_amounts i ON a.id = i.account_id
 LEFT JOIN
+    move_sum_amounts fm ON a.id = fm.account_id
+LEFT JOIN
     final_sum_amounts f ON a.id = f.account_id
 LEFT JOIN
     res_currency c ON c.id = a.currency_id
@@ -553,6 +608,9 @@ WHERE
         i.debit IS NOT NULL AND i.debit != 0
         OR i.credit IS NOT NULL AND i.credit != 0
         OR i.balance IS NOT NULL AND i.balance != 0
+        OR fm.debit IS NOT NULL AND fm.debit != 0
+        OR fm.credit IS NOT NULL AND fm.credit != 0
+        OR fm.balance IS NOT NULL AND fm.balance != 0
         OR f.debit IS NOT NULL AND f.debit != 0
         OR f.credit IS NOT NULL AND f.credit != 0
         OR f.balance IS NOT NULL AND f.balance != 0
@@ -588,6 +646,7 @@ AND
             query_inject_account_params += (
                 tuple(self.filter_analytic_tag_ids.ids),
             )
+        # for initial balance movement filters initial_sum_amounts
         query_inject_account_params += (
             self.date_from,
             self.fy_start_date,
@@ -599,6 +658,16 @@ AND
         query_inject_account_params += (
             self.date_from,
         )
+        # for movement filters move_sum_amounts
+        query_inject_account_params += (
+            self.date_to,
+            self.fy_start_date,
+        )
+        if self.filter_cost_center_ids:
+            query_inject_account_params += (
+                tuple(self.filter_cost_center_ids.ids),
+            )
+        # for totals of end balance movement filters final_sum_amounts
         if self.filter_cost_center_ids:
             query_inject_account_params += (
                 tuple(self.filter_cost_center_ids.ids),
@@ -622,6 +691,8 @@ AND
             self.id,
             self.env.uid,
         )
+        _logger.info("SQL %s" % query_inject_account % query_inject_account_params)
+        _logger.info("PARAMS %s" % (query_inject_account_params, ))
         self.env.cr.execute(query_inject_account, query_inject_account_params)
 
     def _get_partner_sub_subquery_sum_amounts(
@@ -1071,12 +1142,14 @@ INSERT INTO
     create_uid,
     create_date,
     move_line_id,
+    move_id,
     date,
     entry,
     journal,
     account,
     taxes_description,
     partner,
+    partner_id,
     label,
     cost_center,
     matching_number,
@@ -1100,6 +1173,7 @@ SELECT
     %s AS create_uid,
     NOW() AS create_date,
     ml.id AS move_line_id,
+    ml.move_id AS move_id,
     ml.date,
     m.name AS entry,
     j.code AS journal,
@@ -1141,6 +1215,7 @@ SELECT
     '""" + _('No partner allocated') + """' AS partner,
             """
         query_inject_move_line += """
+    ml.partner_id AS partner_id,
     CONCAT_WS(' - ', NULLIF(ml.ref, ''), NULLIF(ml.name, '')) AS label,
     aa.name AS cost_center,
     fr.name AS matching_number,
@@ -1371,8 +1446,11 @@ WITH
                 )::date AS date,
                 SUM(ml.debit) AS debit,
                 SUM(ml.credit) AS credit,
-                SUM(ml.balance) AS balance,
-                ml.currency_id AS currency_id,
+                SUM(ml.balance) AS balance, """
+        if self.foreign_currency:
+            query_inject_move_line_centralized += """SUM(ml.amount_currency) AS amount_currency, """
+            query_inject_move_line_centralized += """ml.currency_id AS currency_id,"""
+        query_inject_move_line_centralized += """
                 ml.journal_id as journal_id
             FROM
                 report_general_ledger_account ra
@@ -1411,7 +1489,10 @@ WITH
             """
         query_inject_move_line_centralized += """
             GROUP BY
-                ra.id, ml.account_id, a.code, 2, ml.currency_id, ml.journal_id
+                ra.id, ml.account_id, a.code, 2, """
+        if self.foreign_currency:
+            query_inject_move_line_centralized += """ml.currency_id, """
+        query_inject_move_line_centralized += """ml.journal_id
         )
 INSERT INTO
     report_general_ledger_move_line
@@ -1425,8 +1506,10 @@ INSERT INTO
     label,
     debit,
     credit,
-    cumul_balance
-    )
+    cumul_balance"""
+        if self.foreign_currency:
+            query_inject_move_line_centralized += """, amount_currency"""
+        query_inject_move_line_centralized += """ )
 SELECT
     ra.id AS report_account_id,
     %s AS create_uid,
@@ -1440,7 +1523,10 @@ SELECT
     ra.initial_balance + (
         SUM(ml.balance)
         OVER (PARTITION BY a.code ORDER BY ml.date)
-    ) AS cumul_balance
+    ) AS cumul_balance """
+        if self.foreign_currency:
+            query_inject_move_line_centralized += """, ml.amount_currency"""
+        query_inject_move_line_centralized += """
 FROM
     report_general_ledger_account ra
 INNER JOIN
@@ -1448,9 +1534,11 @@ INNER JOIN
 INNER JOIN
     account_account a ON ml.account_id = a.id
 INNER JOIN
-    account_journal j ON ml.journal_id = j.id
-LEFT JOIN
-    res_currency c ON ml.currency_id = c.id
+    account_journal j ON ml.journal_id = j.id """
+        if self.foreign_currency:
+            query_inject_move_line_centralized += """
+LEFT JOIN res_currency c ON ml.currency_id = c.id"""
+        query_inject_move_line_centralized += """
 WHERE
     ra.report_id = %s
 AND
@@ -1487,6 +1575,7 @@ ORDER BY
             query_inject_move_line_centralized_params += (tuple(
                 self.filter_journal_ids.ids,
             ),)
+        _logger.info("SQL CENTRL %s" % query_inject_move_line_centralized % query_inject_move_line_centralized_params)
         self.env.cr.execute(
             query_inject_move_line_centralized,
             query_inject_move_line_centralized_params

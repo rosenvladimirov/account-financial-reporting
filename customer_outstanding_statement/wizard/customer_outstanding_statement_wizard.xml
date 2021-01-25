@@ -28,21 +28,70 @@
                 <group name="main_info">
                     <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
                 </group>
-                <group name="account_type">
-                    <label for="account_type"/>
-                    <field name="account_type" nolabel="1" widget="radio"/>
-                </group>
-
                 <group name="dates">
                     <field name="date_end"/>
                 </group>
-                <group name="aging_report">
-                    <field name="show_aging_buckets"/>
-                </group>
-                <group name="multiple_partners">
-                    <field name="number_partner_ids" readonly="1" invisible="1"/>
-                    <field name="filter_partners_non_due" attrs="{'invisible': [('number_partner_ids', '=', 1)]}"/>
-                </group>
+                <notebook>
+                    <page name="info" string="General info">
+                        <group>
+                            <group name="account_type">
+                                <label for="account_type"/>
+                                <field name="account_type" nolabel="1" widget="radio"/>
+                            </group>
+                            <group name="aging_report">
+                                <field name="show_aging_buckets"/>
+                                <field name="show_lines"/>
+                                <field name="use_detailed"/>
+                                <field name="use_partner_selection" options="{'horizontal': true}"/>
+                                <field name="use_invoice_detail"/>
+                                <field name="use_sale_detail"/>
+                                <field name="use_picking_detail"/>
+                            </group>
+                            <group name="multiple_partners">
+                                <field name="number_partner_ids" readonly="1" invisible="1"/>
+                                <field name="filter_partners_non_due" attrs="{'invisible': [('number_partner_ids', '=', 1)]}"/>
+                            </group>
+                        </group>
+                    </page>
+                    <page name="print_properties" string="Properties for Print" groups="report_theming_properties.group_properties_print">
+                        <group>
+                            <group>
+                                <field name="use_product_properties" widget="radio" options="{'horizontal': true}"/>
+                                <field name="print_sets"/>
+                                <field name="print_lots"/>
+                                <field name="product_prop_static_id" invisible="1"/>
+                                <field name="static_template_id" context="{'default_position': 'prints'}"/>
+                                <field name="represent_user_ids" widget="many2many_tags" invisible="0" force_save="1"/>
+                                <field name="use_digital_sign"/>
+                                <field name="issue_user_id" domain="[('id', 'in', represent_user_ids)]"/>
+                            </group>
+                            <group>
+                                <field name="category_print_properties"/>
+                                <field name="use_partner"/>
+                                <field name="empty_properties"/>
+                            </group>
+                        </group>
+                        <separator name="staticnote" colspan="4" string="Note" groups="product_properties.group_properties_print"/>
+                        <field name="static_note" colspan="4" nolabel="1" groups="product_properties.group_properties_print"/>
+                        <separator name="staticproperties" string="Defaults" groups="product_properties.group_properties_print"/>
+                        <field name="print_properties" colspan="4" groups="product_properties.group_properties_print">
+                            <form string="Properties for print">
+                                <group>
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="static_field"/>
+                                        <field name="print"/>
+                                    </group>
+                                </group>
+                            </form>
+                            <tree editable="bottom" string="Properties for print">
+                                <field name="name"/>
+                                <field name="static_field"/>
+                                <field name="print"/>
+                            </tree>
+                        </field>
+                    </page>
+                </notebook>
                 <footer>
                     <button name="button_export_pdf" string="Export PDF" type="object" default_focus="1" class="oe_highlight"/>
                     or

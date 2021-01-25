@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="account_financial_report.report_account_tag_report_qweb">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="account_financial_report.internal_layout">
+                    <t t-call="account_financial_report.report_accaunt_tag_report_base"/>
+                </t>
+            </t>
+        </t>
+    </template>
+    <template id="account_financial_report.report_accaunt_tag_report_base">
+        <t t-set="o" t-value="o.with_context({'lang':o.env.user.lang})" />
+        <t t-set="title">Account TAG Report - <t t-raw="o.company_id.name"/> - <t t-raw="o.company_id.currency_id.name"/></t>
+        <t t-set="company_name" t-value="o.company_id.name"/>
+        <div class="page">
+            <div class="row">
+                <h4 class="mt0" t-esc="title or 'Odoo Report'" style="text-align: center;"/>
+            </div>
+            <!-- Display filters -->
+            <t t-call="account_financial_report.report_account_tag_report_filters"/>
+            <div class="page_break"/>
+            <div class="act_as_table data_table" style="width: 100%;">
+                <!-- Display table headers for lines -->
+                <div class="act_as_thead">
+                    <div class="act_as_row labels">
+                        <!--## code-->
+                        <div class="act_as_cell first_column" style="width: 5%;">Code</div>
+                        <!--## name-->
+                        <div class="act_as_cell" style="width: 50%;">Name</div>
+                        <!--## Debit-->
+                        <div class="act_as_cell" style="width: 15%;" t-if="o.show_movement">Debit</div>
+                        <!--## net-->
+                        <div class="act_as_cell" style="width: 15%;" t-if="o.show_movement">Credit</div>
+                        <!--## Balance -->
+                        <div class="act_as_cell" style="width: 15%;">Balance</div>
+                    </div>
+                </div>
+                <t t-if="o.group_by_period in ['ym', 'yq', 'yqm']">
+                    <t t-foreach="o.account_group_ids" t-as="group">
+                        <t t-if="group.account_tag_id">
+                            <t t-set="res_model" t-value="'account.account.tag'"/>
+                            <t t-set="res_id" t-value="group.account_tag_id.id"/>
+                            <t t-set="code" t-value="group.account_tag_id.code"/>
+                            <t t-set="name" t-value="group.account_tag_id.name"/>
+                        </t>
+                        <t t-if="group.account_group_id">
+                            <t t-set="res_model" t-value="'account.group'"/>
+                            <t t-set="res_id" t-value="group.account_group_id.id"/>
+                            <t t-set="code" t-value="group.account_group_id.code_prefix"/>
+                            <t t-set="name" t-value="group.account_group_id.name"/>
+                        </t>
+                        <div class="act_as_row lines mb8">
+                            <div class="act_as_cell left oe_tooltip_string" style="width: 5%;">
+                                <span>
+                                    <a t-att-data-active-id="res_id"
+                                       t-att-data-res-model="res_model"
+                                       class="o_account_financial_reports_web_action"
+                                       t-att-style="style">
+                                    <t t-att-style="style" t-raw="code"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell left oe_tooltip_string" style="width: 50%;">
+                                <span>
+                                    <a t-att-data-active-id="res_id"
+                                        t-att-data-res-model="res_model"
+                                        class="o_account_financial_reports_web_action"
+                                        t-att-style="style"><t t-att-style="style" t-raw="name"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell amount" style="width: 15%;">
+                                <t t-set="domain"
+                                   t-value="[('account_id', 'in', group.account_tag_id.account_ids.ids),
+                                             ('date', '&gt;=', o.date_from),
+                                             ('date', '&lt;=', o.date_to),
+                                             ]"/>
+                                <span>
+                                    <a t-att-data-domain="domain"
+                                        t-att-data-res-model="'account.move.line'"
+                                        class="o_account_financial_reports_web_action_multi"
+                                        t-att-style="style">
+                                    <t t-att-style="style" t-raw="group.debit"
+                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell amount" style="width: 15%;">
+                                <t t-set="domain"
+                                   t-value="[('account_id', 'in', group.account_tag_id.account_ids.ids),
+                                             ('date', '&gt;=', o.date_from),
+                                             ('date', '&lt;=', o.date_to),
+                                             ]"/>
+                                <span>
+                                    <a t-att-data-domain="domain"
+                                        t-att-data-res-model="'account.move.line'"
+                                        class="o_account_financial_reports_web_action_multi"
+                                        t-att-style="style">
+                                    <t t-att-style="style" t-raw="group.credit"
+                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell amount" style="width: 15%;">
+                                <t t-set="domain"
+                                   t-value="[('account_id', '=', group.account_tag_id.account_ids.ids),
+                                             ('date', '&gt;=', o.date_from),
+                                             ('date', '&lt;=', o.date_to),
+                                             ]"/>
+                                <span>
+                                    <a t-att-data-domain="domain"
+                                        t-att-data-res-model="'account.move.line'"
+                                        class="o_account_financial_reports_web_action_multi"
+                                        t-att-style="style">
+                                    <t t-att-style="style" t-raw="group.balance"
+                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                </span>
+                            </div>
+                        </div>
+                        <t t-foreach="o.account_tags_id.filtered(lambda r: r.taxtag_id == group.account_tag_id).sorted(lambda r: '%s%s%02d' % (int(r.year), int(r.quarter), int(r.month)))" t-as="tag">
+                            <div class="act_as_row lines" style="font-weight: bold;">
+                                <t t-if="tag.account_tag_id">
+                                    <t t-set="res_model" t-value="'account.account.tag'"/>
+                                    <t t-set="res_id" t-value="tag.account_tag_id.id"/>
+                                </t>
+                                <t t-if="tag.account_group_id">
+                                    <t t-set="res_model" t-value="'account.tax.group'"/>
+                                    <t t-set="res_id" t-value="tag.account_group_id.id"/>
+                                </t>
+                                <div class="act_as_cell left oe_tooltip_string" style="width: 5%;"/>
+                                <div class="act_as_cell right oe_tooltip_string" style="width: 50%;">
+                                    <t t-if="o.group_by_period in ['ym']">
+                                        Y<span t-esc="int(tag.year)"/>-M<span t-esc="int(tag.month)"/>
+                                    </t>
+                                    <t t-if="o.group_by_period in ['yq']">
+                                        Y<span t-esc="int(tag.year)"/>-Q<span t-esc="int(tag.quarter)"/>
+                                    </t>
+                                    <t t-if="o.group_by_period in ['yqm']">
+                                        Y<span t-esc="int(tag.year)"/>-Q<span t-esc="int(tag.quarter)"/>-M<span t-esc="int(tag.month)"/>
+                                    </t>
+                                </div>
+                                <div class="act_as_cell amount" style="width: 15%;">
+                                    <t t-set="domain"
+                                       t-value="[('account_id', 'in', group.account_tag_id.account_ids.ids),
+                                                 ('date', '&gt;=', o.date_from),
+                                                 ('date', '&lt;=', o.date_to)]"/>
+                                    <span>
+                                        <a t-att-data-domain="domain"
+                                            t-att-data-res-model="'account.move.line'"
+                                            class="o_account_financial_reports_web_action_multi"
+                                            t-att-style="style">
+                                        <t t-att-style="style" t-raw="tag.debit"
+                                            t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                    </span>
+                                </div>
+                                <div class="act_as_cell amount" style="width: 15%;">
+                                    <t t-set="domain"
+                                       t-value="[('account_id', 'in', group.account_tag_id.account_ids.ids),
+                                                 ('date', '&gt;=', o.date_from),
+                                                 ('date', '&lt;=', o.date_to)]"/>
+                                    <span>
+                                        <a t-att-data-domain="domain"
+                                            t-att-data-res-model="'account.move.line'"
+                                            class="o_account_financial_reports_web_action_multi"
+                                            t-att-style="style">
+                                        <t t-att-style="style" t-raw="tag.credit"
+                                            t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                    </span>
+                                </div>
+                                <div class="act_as_cell amount" style="width: 15%;">
+                                    <t t-set="domain"
+                                       t-value="[('account_id', 'in', group.account_tag_id.account_ids.ids),
+                                                 ('date', '&gt;=', o.date_from),
+                                                 ('date', '&lt;=', o.date_to),
+                                                 ('tax_exigible', '=', True)]"/>
+                                    <span>
+                                        <a t-att-data-domain="domain"
+                                            t-att-data-res-model="'account.move.line'"
+                                            class="o_account_financial_reports_web_action_multi"
+                                            t-att-style="style">
+                                        <t t-att-style="style" t-raw="tag.balance"
+                                            t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Display details by Tax -->
+                            <t t-if="o.tax_detail">
+                                <t t-foreach="tag.tax_ids" t-as="tax">
+                                    <t t-set="res_model" t-value="'account.tax'"/>
+                                    <div class="act_as_row lines mb8">
+                                        <div class="act_as_cell" style="width: 5%;"/>
+                                        <div class="act_as_cell left oe_tooltip_string" style="padding-left: 20px; width: 40%;">
+                                            <span>
+                                                <a t-att-data-active-id="tax.tax_id.id"
+                                                    t-att-data-res-model="res_model"
+                                                    class="o_account_financial_reports_web_action"
+                                                    t-att-style="style"><t t-att-style="style" t-raw="tax.name"/></a>
+                                            </span>
+                                        </div>
+                                        <div class="act_as_cell amount" style="width: 15%;">
+                                            <t t-set="domain"
+                                               t-value="[('tax_ids', 'in', tax.tax_id.ids),
+                                                         ('date', '&gt;=', o.date_from),
+                                                         ('date', '&lt;=', o.date_to),
+                                                         ('tax_exigible', '=', True)]"/>
+                                            <span>
+                                                <a t-att-data-domain="domain"
+                                                    t-att-data-res-model="'account.move.line'"
+                                                    class="o_account_financial_reports_web_action_multi"
+                                                    t-att-style="style">
+                                                <t t-att-style="style" t-raw="tax.base"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                            </span>
+                                        </div>
+                                        <div class="act_as_cell amount" style="width: 10%;">
+                                            <t t-set="domain"
+                                               t-value="[('tax_ids', 'in', tax.tax_id.ids),
+                                                         ('date', '&gt;=', o.date_from),
+                                                         ('date', '&lt;=', o.date_to),
+                                                         ('tax_exigible', '=', True)]"/>
+                                            <span>
+                                                <a t-att-data-domain="domain"
+                                                    t-att-data-res-model="'account.move.line'"
+                                                    class="o_account_financial_reports_web_action_multi"
+                                                    t-att-style="style">
+                                                <t t-att-style="style" t-raw="tax.net"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                            </span>
+                                        </div>
+                                        <div class="act_as_cell amount" style="width: 15%;">
+                                            <t t-set="domain"
+                                               t-value="[('tax_line_id', '=', tax.tax_id.id),
+                                                         ('date', '&gt;=', o.date_from),
+                                                         ('date', '&lt;=', o.date_to),
+                                                         ('tax_exigible', '=', True)]"/>
+                                            <span>
+                                                <a t-att-data-domain="domain"
+                                                    t-att-data-res-model="'account.move.line'"
+                                                    class="o_account_financial_reports_web_action_multi"
+                                                    t-att-style="style">
+                                                <t t-att-style="style" t-raw="tax.tax"
+                                                    t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </t>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+                <t t-else="">
+                    <t t-foreach="o.account_group_ids.sorted(lambda r: r.account_tag_id.code)" t-as="tag">
+                        <div class="act_as_row lines" style="font-weight: bold;">
+                            <t t-if="tag.account_tag_id">
+                                <t t-set="res_model" t-value="'account.account.tag'"/>
+                                <t t-set="res_id" t-value="tag.account_tag_id.id"/>
+                                <t t-set="code" t-value="tag.account_tag_id.code"/>
+                                <t t-set="name" t-value="tag.account_tag_id.name"/>
+                            </t>
+                            <t t-if="tag.account_group_id">
+                                <t t-set="res_model" t-value="'account.group'"/>
+                                <t t-set="res_id" t-value="tag.account_group_id.id"/>
+                                <t t-set="code" t-value="tag.account_group_id.code_prefix"/>
+                                <t t-set="name" t-value="group.account_group_id.name"/>
+                            </t>
+                            <div class="act_as_cell left oe_tooltip_string" style="width: 5%;">
+                                <span>
+                                    <a t-att-data-active-id="res_id"
+                                       t-att-data-res-model="res_model"
+                                       class="o_account_financial_reports_web_action"
+                                       t-att-style="style">
+                                    <t t-att-style="style" t-esc="code"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell left oe_tooltip_string" style="width: 50%;">
+                                <span>
+                                    <a t-att-data-active-id="res_id"
+                                        t-att-data-res-model="res_model"
+                                        class="o_account_financial_reports_web_action"
+                                        t-att-style="style"><t t-att-style="style" t-esc="name"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell amount" style="width: 15%;" t-if="o.show_movement">
+                                <t t-set="domain"
+                                   t-value="[('account_id', 'in', tag.account_tag_id.account_ids.ids),
+                                             ('date', '&gt;=', o.date_from),
+                                             ('date', '&lt;=', o.date_to)]"/>
+                                <span>
+                                    <a t-att-data-domain="domain"
+                                        t-att-data-res-model="'account.move.line'"
+                                        class="o_account_financial_reports_web_action_multi"
+                                        t-att-style="style">
+                                    <t t-att-style="style" t-raw="tag.debit"
+                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell amount" style="width: 15%;" t-if="o.show_movement">
+                                <t t-set="domain"
+                                   t-value="[('account_id', 'in', tag.account_tag_id.account_ids.ids),
+                                             ('date', '&gt;=', o.date_from),
+                                             ('date', '&lt;=', o.date_to)]"/>
+                                <span>
+                                    <a t-att-data-domain="domain"
+                                        t-att-data-res-model="'account.move.line'"
+                                        class="o_account_financial_reports_web_action_multi"
+                                        t-att-style="style">
+                                    <t t-att-style="style" t-raw="tag.credit"
+                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                </span>
+                            </div>
+                            <div class="act_as_cell amount" style="width: 15%;">
+                                <t t-set="domain"
+                                   t-value="[('account_id', 'in', tag.account_tag_id.account_ids.ids),
+                                             ('date', '&gt;=', o.date_from),
+                                             ('date', '&lt;=', o.date_to),
+                                             ('tax_exigible', '=', True)]"/>
+                                <span>
+                                    <a t-att-data-domain="domain"
+                                        t-att-data-res-model="'account.move.line'"
+                                        class="o_account_financial_reports_web_action_multi"
+                                        t-att-style="style">
+                                    <t t-att-style="style" t-raw="tag.balance"
+                                        t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- Display details by Accounts -->
+                        <t t-if="o.account_detail">
+                            <t t-foreach="o.account_tags_ids.sorted(lambda r: r.account_id.code).filtered(lambda r: r.account_tag_id == tag.account_tag_id)" t-as="account">
+                                <t t-set="res_model" t-value="'account.account'"/>
+                                <div class="act_as_row lines mb8">
+                                    <t t-set="code" t-value="account.account_id.code"/>
+                                    <t t-set="name" t-value="account.account_id.name"/>
+                                    <div class="act_as_cell left oe_tooltip_string" style="width: 5%;">
+                                        <span>
+                                            <a t-att-data-active-id="res_id"
+                                               t-att-data-res-model="res_model"
+                                               class="o_account_financial_reports_web_action"
+                                               t-att-style="style">
+                                            <t t-att-style="style" t-esc="code"/></a>
+                                        </span>
+                                    </div>
+                                    <div class="act_as_cell left oe_tooltip_string" style="width: 50%;">
+                                        <span>
+                                            <a t-att-data-active-id="account.account_id.id"
+                                                t-att-data-res-model="res_model"
+                                                class="o_account_financial_reports_web_action"
+                                                t-att-style="style"><t t-att-style="style" t-raw="name"/></a>
+                                        </span>
+                                    </div>
+                                    <t t-set="res_model" t-value="'account.move.line'"/>
+                                    <div class="act_as_cell amount" style="width: 15%;" t-if="o.show_movement">
+                                        <t t-set="domain"
+                                           t-value="[('account_id', 'in', account.account_tag_id.account_ids.ids),
+                                                     ('account_id', '=', account.account_id.id),
+                                                     ('date', '&gt;=', o.date_from),
+                                                     ('date', '&lt;=', o.date_to)]"/>
+                                        <span>
+                                            <a t-att-data-domain="domain"
+                                                t-att-data-res-model="'account.move.line'"
+                                                class="o_account_financial_reports_web_action_multi"
+                                                t-att-style="style">
+                                            <t t-att-style="style" t-raw="account.debit"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                        </span>
+                                    </div>
+                                    <div class="act_as_cell amount" style="width: 15%;" t-if="o.show_movement">
+                                        <t t-set="domain"
+                                           t-value="[('account_id', 'in', account.account_tag_id.account_ids.ids),
+                                                     ('account_id', '=', account.account_id.id),
+                                                     ('date', '&gt;=', o.date_from),
+                                                     ('date', '&lt;=', o.date_to)]"/>
+                                        <span>
+                                            <a t-att-data-domain="domain"
+                                                t-att-data-res-model="'account.move.line'"
+                                                class="o_account_financial_reports_web_action_multi"
+                                                t-att-style="style">
+                                            <t t-att-style="style" t-raw="account.credit"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                        </span>
+                                    </div>
+                                    <div class="act_as_cell amount" style="width: 15%;">
+                                        <t t-set="domain"
+                                           t-value="[('account_id', 'in', account.account_tag_id.account_ids.ids),
+                                                     ('account_id', '=', account.account_id.id),
+                                                     ('date', '&gt;=', o.date_from),
+                                                     ('date', '&lt;=', o.date_to)]"/>
+                                        <span>
+                                            <a t-att-data-domain="domain"
+                                                t-att-data-res-model="'account.move.line'"
+                                                class="o_account_financial_reports_web_action_multi"
+                                                t-att-style="style">
+                                            <t t-att-style="style" t-raw="account.balance"
+                                                t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </div>
+        </div>
+    </template>
+    <template id="account_financial_report.report_account_tag_report_filters">
+        <div class="act_as_table data_table" style="width: 100%;">
+            <div class="act_as_row labels mt8">
+                <div class="act_as_cell">Date From</div>
+                <div class="act_as_cell">Date To</div>
+                <div class="act_as_cell">Based On</div>
+            </div>
+            <div class="act_as_row">
+                <div class="act_as_cell">
+                    <span t-field="o.date_from"/>
+                </div>
+                <div class="act_as_cell">
+                    <span t-field="o.date_to"/>
+                </div>
+                <div class="act_as_cell">
+                    <span t-field="o.based_on"/>
+                </div>
+            </div>
+        </div>
+    </template>
+</odoo>

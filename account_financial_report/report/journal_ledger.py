@@ -71,6 +71,7 @@ class ReportJournalLedger(models.TransientModel):
     foreign_currency = fields.Boolean()
     with_account_name = fields.Boolean()
     centralize = fields.Boolean()
+    group_by = fields.Boolean()
 
     @api.model
     def _get_move_targets(self):
@@ -277,6 +278,7 @@ class ReportJournalLedger(models.TransientModel):
                 label,
                 debit,
                 credit,
+                balance,
                 company_currency_id,
                 amount_currency,
                 currency_id,
@@ -303,6 +305,7 @@ class ReportJournalLedger(models.TransientModel):
                 aml.name as label,
                 aml.debit as debit,
                 aml.credit as credit,
+                aml.balance as balance,
                 aml.company_currency_id as currency_id,
                 aml.amount_currency as amount_currency,
                 aml.currency_id as currency_id,
@@ -383,6 +386,7 @@ class ReportJournalLedger(models.TransientModel):
                 label,
                 debit,
                 credit,
+                balance,
                 company_currency_id,
                 amount_currency,
                 currency_id,
@@ -404,6 +408,7 @@ class ReportJournalLedger(models.TransientModel):
                 STRING_AGG(aml.name, ', ') as label,
                 sum(aml.debit) as debit,
                 sum(aml.credit) as credit,
+                sum(aml.balance) as balance,
                 aml.company_currency_id as currency_id,
                 sum(aml.amount_currency) as amount_currency,
                 aml.currency_id as currency_id,
@@ -439,18 +444,18 @@ class ReportJournalLedger(models.TransientModel):
                         on (currency.id = aml.currency_id)
                 WHERE
                     rjqm.report_id = %s
-                GROUP BY aml.company_id, 
-                         rjqm.report_id, 
-                         rjqm.id, 
+                GROUP BY aml.company_id,
+                         rjqm.report_id,
+                         rjqm.id,
                          rjqm.report_journal_ledger_id,
                          am.id,
-                         aml.account_id, 
-                         aml.partner_id, 
-                         aml.date, 
-                         aml.company_currency_id, 
-                         aml.currency_id, 
-                         aml.tax_line_id, 
-                         at.description, 
+                         aml.account_id,
+                         aml.partner_id,
+                         aml.date,
+                         aml.company_currency_id,
+                         aml.currency_id,
+                         aml.tax_line_id,
+                         at.description,
                          at.name;
         """
         params = (
@@ -704,7 +709,7 @@ class ReportJournalLedger(models.TransientModel):
         else:
             report_name = 'account_financial_report.' \
                           'report_journal_ledger_qweb'
-        _logger.info("PRINT DATA %s:%s" % (report_type, report_name))
+        #_logger.info("PRINT DATA %s:%s" % (report_type, report_name))
         return self.env['ir.actions.report'].search(
             [('report_name', '=', report_name),
              ('report_type', '=', report_type)], limit=1).report_action(self)
@@ -712,8 +717,9 @@ class ReportJournalLedger(models.TransientModel):
     def _get_html(self):
         result = {}
         rcontext = {}
-        context = dict(self.env.context)
-        report = self.browse(context.get('active_id'))
+        #context = dict(self.env.context)
+        #_logger.info("CONTEXT %s" % self._context.get('active_id'))
+        report = self.browse(self._context.get('active_id'))
         if report:
             rcontext['o'] = report
             result['html'] = self.env.ref(
@@ -724,6 +730,19 @@ class ReportJournalLedger(models.TransientModel):
     @api.model
     def get_html(self, given_context=None):
         return self._get_html()
+
+    @api.model
+    def _transient_vacuum(self, force=False):
+        """Remove journal ledger subtables first for avoiding a costly
+        ondelete operation.
+        """
+        # Next 3 lines adapted from super method for mimicking behavior
+        cls = type(self)
+        if not force and (cls._transient_check_count < 21):
+            return True  # no vacuum cleaning this time
+        self.env.cr.execute("DELETE FROM report_journal_ledger_move_line")
+        self.env.cr.execute("DELETE FROM report_journal_ledger_move")
+        return super(ReportJournalLedger, self)._transient_vacuum(force=force)
 
 
 class ReportJournalLedgerJournal(models.TransientModel):
@@ -757,6 +776,9 @@ class ReportJournalLedgerJournal(models.TransientModel):
         digits=DIGITS,
     )
     credit = fields.Float(
+        digits=DIGITS,
+    )
+    balance = fields.Float(
         digits=DIGITS,
     )
     company_id = fields.Many2one(
@@ -850,6 +872,9 @@ class ReportJournalLedgerMoveLine(models.TransientModel):
     credit = fields.Float(
         digits=DIGITS,
     )
+    balance = fields.Float(
+        digits=DIGITS,
+    )
     company_currency_id = fields.Many2one(
         comodel_name='res.currency',
     )
@@ -914,6 +939,9 @@ class ReportJournalLedgerCentralizationMoveLine(models.TransientModel):
         digits=DIGITS,
     )
     credit = fields.Float(
+        digits=DIGITS,
+    )
+    balance = fields.Float(
         digits=DIGITS,
     )
     company_currency_id = fields.Many2one(

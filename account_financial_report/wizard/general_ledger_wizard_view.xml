@@ -13,7 +13,7 @@
                 <div attrs="{'invisible': [('not_only_one_unaffected_earnings_account', '=', True)]}">
                     <group name="filters">
                         <group name="date_range">
-                            <field name="date_range_id"/>
+                            <field name="date_range_id" domain="[('company_id', '=', company_id)]"/>
                             <field name="date_from"/>
                             <field name="date_to"/>
                             <field name="fy_start_date" invisible="1"/>
@@ -22,8 +22,10 @@
                             <field name="target_move" widget="radio"/>
                             <field name="centralize"/>
                             <field name="hide_account_at_0"/>
+                            <field name="hide_account_on_0"/>
                             <field name="foreign_currency"/>
                             <field name="show_analytic_tags"/>
+                            <field name="hide_detail"/>
                         </group>
                     </group>
                     <notebook>
@@ -32,23 +34,32 @@
                                 <field name="receivable_accounts_only"/>
                                 <field name="payable_accounts_only"/>
                             </group>
-                            <field name="account_ids"
-                                   nolabel="1"
-                                   widget="many2many_tags"
-                                   options="{'no_create': True}"/>
+                            <group string="Used accounts" col="4">
+                                <field name="account_ids" nolabel="1" colspan="4" widget="many2many_tags" options="{'no_create': True}"/>
+                            </group>
                         </page>
                         <page string="Filter partners">
-                            <field name="partner_ids" nolabel="1"
-                                   widget="many2many_tags"
-                                   options="{'no_create': True}"/>
+                            <group string="Used partners" col="4">
+                                <field name="partner_ids" nolabel="1" widget="many2many_tags" options="{'no_create': True}"/>
+                            </group>
                         </page>
                         <page string="Filter cost centers" groups="analytic.group_analytic_accounting">
-                            <field name="cost_center_ids" nolabel="1"
-                                   options="{'no_create': True}"
-                                   groups="analytic.group_analytic_accounting"/>
+                            <field name="cost_center_ids" nolabel="1" options="{'no_create': True}" groups="analytic.group_analytic_accounting"/>
                         </page>
                         <page string="Filter analytic tags">
-                            <field name="analytic_tag_ids" widget="many2many_tags" nolabel="1" options="{'no_create': True}"/>
+                            <group string="Used tags" col="4">
+                                <field name="analytic_tag_ids" widget="many2many_tags" nolabel="1" options="{'no_create': True}"/>
+                            </group>
+                        </page>
+                        <page string="Filter journal by type">
+                            <group string="Used types journal" col="4">
+                                <field name="type_ids" widget="many2many_tags" nolabel="1" options="{'no_create': True}"/>
+                            </group>
+                        </page>
+                        <page string="Filter by journals">
+                            <group string="Used journals" col="4">
+                                <field name="account_journal_ids" widget="many2many_tags" nolabel="1" options="{'no_create': True}"/>
+                            </group>
                         </page>
                     </notebook>
                 </div>

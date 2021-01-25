@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="vat_report_wizard" model="ir.ui.view">
-        <field name="name">vat_report_wizard_view</field>
-        <field name="model">vat.report.wizard</field>
+    <record id="account_tag_report_wizard" model="ir.ui.view">
+        <field name="name">account_tag_report_wizard_view</field>
+        <field name="model">account.tag.report.wizard</field>
         <field name="arch" type="xml">
-        <form string="VAT Report Options">
+        <form string="Account TAG Report Options">
             <group name="main_info">
                 <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
             </group>
@@ -15,14 +15,12 @@
                     <field name="date_from"/>
                     <field name="date_to"/>
                     <field name="group_by_period"/>
-                    <field name="receivable_vat_only"/>
-                    <field name="payable_vat_only"/>
                 </group>
                 <group name="other_filters">
                     <field name="based_on" widget="radio"/>
                     <field name="parent_id"/>
-                    <field name="tax_detail" attrs="{'invisible':[('based_on', '=', 'vattaxtags')]}"/>
-                    <field name="pdf_detail"/>
+                    <field name="account_detail"/>
+                    <field name="show_movement"/>
                 </group>
             </group>
             <footer>
@@ -31,8 +29,8 @@
                     or
                     <button name="button_export_pdf" string="Export PDF" type="object"/>
                     or
-                    <button name="button_export_fillpdf" string="Export FillPDF" type="object"/>
-                    or
+                    <!-- <button name="button_export_fillpdf" string="Export FillPDF" type="object"/>
+                    or -->
                     <button name="button_export_xlsx" string="Export XLSX" type="object"/>
                     or
                     <button string="Cancel" class="oe_link" special="cancel" />
@@ -41,11 +39,11 @@
         </field>
     </record>
 
-    <act_window id="action_vat_report_wizard"
-                name="VAT Report"
-                res_model="vat.report.wizard"
+    <act_window id="action_account_tag_report_wizard"
+                name="Account TAG Report"
+                res_model="account.tag.report.wizard"
                 view_type="form"
                 view_mode="form"
-                view_id="vat_report_wizard"
+                view_id="account_tag_report_wizard"
                 target="new" />
 </odoo>

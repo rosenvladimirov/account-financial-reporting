@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Account Financial Reports',
-    'version': '11.0.2.7.0',
+    'version': '11.0.2.8.0',
     'category': 'Reporting',
     'summary': 'OCA Financial Reports',
     'author': 'Rosen Vladimirov,'
@@ -32,6 +32,7 @@
         'wizard/open_items_wizard_view.xml',
         'wizard/trial_balance_wizard_view.xml',
         'wizard/vat_report_wizard_view.xml',
+        'wizard/account_tag_report_wizard.xml',
         'views/menuitems.xml',
         'report/reports.xml',
         'report/templates/layouts.xml',
@@ -41,7 +42,9 @@
         'report/templates/open_items.xml',
         'report/templates/trial_balance.xml',
         'report/templates/vat_report.xml',
+        'report/templates/account_account_tag.xml',
         'views/account_view.xml',
+        'views/analytic_account_views.xml',
         'views/report_template.xml',
         'views/report_general_ledger.xml',
         'views/report_journal_ledger.xml',
@@ -49,6 +52,10 @@
         'views/report_open_items.xml',
         'views/report_aged_partner_balance.xml',
         'views/report_vat_report.xml',
+        'views/report_account_tag_report.xml',
+    ],
+    'qweb': [
+        'static/src/xml/account_financial_reporting_template.xml',
     ],
     'installable': True,
     'application': True,

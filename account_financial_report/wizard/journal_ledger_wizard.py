@@ -39,6 +39,10 @@ class JournalLedgerReportWizard(models.TransientModel):
         string="Journals",
         required=False,
     )
+    type_ids = fields.Many2many(
+        comodel_name='journal.ledger.t.r.wizard',
+        string='Choice journal type',
+    )
     move_target = fields.Selection(
         selection='_get_move_targets',
         default='all',
@@ -62,6 +66,8 @@ class JournalLedgerReportWizard(models.TransientModel):
     )
     centralize = fields.Boolean(string='Activate centralization',
                                 default=False)
+    group_by = fields.Boolean(string='Group by account',
+                              default=False)
 
     @api.model
     def _get_move_targets(self):
@@ -106,6 +112,15 @@ class JournalLedgerReportWizard(models.TransientModel):
             res['domain']['journal_ids'] += [
                 ('company_id', '=', self.company_id.id)]
         return res
+
+    @api.onchange('type_ids')
+    def onchange_type_ids(self):
+        type_ids = set([])
+        for type_id in self.type_ids:
+            type_ids.update([type_id.code])
+        if len(type_ids) > 0:
+            journal_ids = self.env['account.journal'].search([('type', 'in', list(type_ids))])
+            self.journal_ids = journal_ids
 
     @api.multi
     def button_export_html(self):
@@ -154,6 +169,7 @@ class JournalLedgerReportWizard(models.TransientModel):
             'sort_option': self.sort_option,
             'group_option': self.group_option,
             'centralize': self.centralize,
+            'group_by': self.group_by,
             'with_account_name': self.with_account_name,
         }
 
@@ -164,3 +180,36 @@ class JournalLedgerReportWizard(models.TransientModel):
         report = model.create(self._prepare_report_journal_ledger())
         report.compute_data_for_report()
         return report.print_report(report_type)
+
+    @api.model
+    def default_get(self, fields):
+        res = super(JournalLedgerReportWizard, self).default_get(fields)
+        res.update({
+                'move_target': 'all',
+                'sort_option': 'move_name',
+                'group_option': 'journal',
+                'company_id': self.env.user.company_id.id,
+            })
+        type = [
+            ('sale', _('Sale')),
+            ('purchase', _('Purchase')),
+            ('cash', _('Cash')),
+            ('bank', _('Bank')),
+            ('general', _('Miscellaneous')),
+            ]
+        type_ids = self.env['journal.ledger.t.r.wizard']
+        for line in type:
+            if not type_ids.search([('code', '=', line[0])]):
+                type_ids.create({
+                    'code': line[0],
+                    'name': line[1],
+                })
+        return res
+
+
+class GeneralLedgerTypeReportWizard(models.TransientModel):
+    _name = "journal.ledger.t.r.wizard"
+    _description = "Journal Ledger Report Wizard Journal types"
+
+    code = fields.Char('key')
+    name = fields.Char('Name')

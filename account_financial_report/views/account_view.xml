@@ -9,6 +9,10 @@
             <field name="deprecated" position="after">
                 <field name="centralized"/>
             </field>
+            <field name="group_id" position="before">
+                <field name="section_group_id"/>
+                <field name="account_group_id" readonly="1"/>
+            </field>
         </field>
     </record>
     <record id="account_tag_view_bg_form" model="ir.ui.view">
@@ -20,12 +24,13 @@
                 <page string="Reports configuration" name="reports">
                     <group>
                         <group string="Taxes" name="config">
-                            <field name="type_taxes" attrs="{'invisible': [('applicability', 'not in', ('taxes', 'info'))]}"/>
-                            <field name="type_info" attrs="{'invisible': [('applicability', 'not in', ('taxes', 'info'))]}"/>
+                            <field name="type_taxes" attrs="{'invisible': [('applicability', 'not in', ['taxes', 'info'])]}"/>
+                            <field name="type_info" attrs="{'invisible': [('applicability', 'not in', ['taxes', 'info'])]}"/>
                         </group>
                         <group string="Fields">
-                            <field name="pdf_field_net" attrs="{'invisible': [('type_taxes', 'in', ('1')), ('applicability', 'not in', ('taxes', 'info'))]}"/>
-                            <field name="pdf_field_tax" attrs="{'invisible': [('type_taxes', 'in', ('0', '2', '3')), ('applicability', 'not in', ('taxes', 'info'))]}"/>
+                            <field name="pdf_field_net" attrs="{'invisible': [('type_taxes', 'in', ['1']), ('applicability', 'not in', ['taxes', 'info'])]}"/>
+                            <field name="pdf_field_tax" attrs="{'invisible': [('type_taxes', 'in', ['0', '2', '3']), ('applicability', 'not in', ['taxes', 'info'])]}"/>
+                            <field name="pdf_field_balance" attrs="{'invisible': [('applicability', 'not in', ['accounts', 'info'])]}"/>
                             <field name="csv_field"/>
                             <field name="xml_tag"/>
                         </group>
@@ -34,6 +39,45 @@
             </xpath>
         </field>
     </record>
+    <record id="view_account_group_form" model="ir.ui.view">
+        <field name="name">account.group.form</field>
+            <field name="model">account.group</field>
+            <field name="inherit_id" ref="account.view_account_group_form" />
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                    <field name="max_counter"/>
+                    <field name="level"/>
+                    <field name="company_id"/>
+                    <field name="properties_user_type_id"/>
+                    <field name="properties_reconcile"/>
+                </field>
+            </field>
+    </record>
+    <record id="view_account_group_tree" model="ir.ui.view">
+        <field name="name">account.group.tree</field>
+        <field name="model">account.group</field>
+        <field name="inherit_id" ref="account.view_account_group_tree" />
+        <field name="arch" type="xml">
+            <field name="code_prefix" position="after">
+                <field name="complete_code_prefix"/>
+            </field>
+            <field name="name" position="replace">
+                <field name="complete_name"/>
+            </field>
+        </field>
+    </record>
+    <record id="action_view_account_group_tree" model="ir.actions.act_window">
+        <field name="name">Account Group</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.group</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="account.view_account_group_search"/>
+        <field name="view_id" ref="account.view_account_group_tree"/>
+    </record>
+    <menuitem action="action_view_account_group_tree" id="menu_action_view_account_group_tree" parent="account.account_account_menu" groups="account.group_account_user" sequence="0"/>
+
+    <!--
     <record id="view_tax_report_form" model="ir.ui.view">
         <field name="name">account.tax.report.form</field>
         <field name="model">account.tax</field>
@@ -45,4 +89,5 @@
             </field>
         </field>
     </record>
+    -->
 </odoo>
